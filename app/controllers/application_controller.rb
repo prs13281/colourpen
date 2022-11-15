@@ -14,10 +14,13 @@ class ApplicationController < ActionController::Base
     when Admin
      admin_users_path
     when User
-     root_path
+     users_my_page_path
    end
   end
 
+# サインアウト後の遷移先
+# adminはログイン画面
+# userはトップ画面
   def after_sign_out_path_for(resource)
     if resource == :admin
      new_admin_session_path

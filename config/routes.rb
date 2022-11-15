@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :posts,only: [:edit,:update]
-    resources :comments,only: [:show,:edit,:update]
+    resources :comments,only: [:index,:show,:edit,:update]
     resources :users,only: [:index,:show,:edit,:update]
   end
 

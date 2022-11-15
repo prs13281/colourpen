@@ -1,4 +1,8 @@
 class Admin::CommentsController < ApplicationController
+  # 管理者にログインしている場合のみ表示
+  before_action :authenticate_admin!
+  
+  
   def index
   end
 
