@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   registrations: "user/registrations",
   sessions: 'user/sessions'
 }
+  #ゲストログイン
+  post '/guest_sign_in' => 'user/posts#guest'
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
+
 
   namespace :admin do
     root to: "homes#top"
