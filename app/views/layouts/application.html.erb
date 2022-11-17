@@ -20,8 +20,8 @@
         <%# end %>
            <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-              <p class="aisatu">ようこそ〜！</p>
-             <li><%#= link_to "検索フォーム", user_my_page_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
+              <p class="aisatu">新たな幸せの発見を</p>
+             <li><%= link_to "検索フォーム作る", new_post_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
              <li><%= link_to "ランキング", ranking_index_path, class:'btn btn-outline-Warning btn-sm btn-block mb-3' %></li>
              <li><%= link_to "絶景一覧", posts_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
              <li><%= link_to "投稿", new_post_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
