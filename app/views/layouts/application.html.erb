@@ -26,9 +26,8 @@
              <li><%= link_to "絶景一覧", posts_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
              <li><%= link_to "投稿", new_post_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
              <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class:'btn btn-outline-Secondary btn-md btn-block mb-3' %></li>
-
              <!--マイページはプロフィール画像をリンクにする-->
-             <li><%#= link_to "マイページ", cart_items_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
+             <li><%= link_to "マイページ", users_my_page_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
             <% elsif admin_signed_in? %>
              <li><%= link_to "会員一覧", admin_users_path, class:'btn btn-outline-Dark btn-md btn-block mb-3' %></li>
              <li><%= link_to "コメント一覧", admin_comments_path, class:'btn btn-outline-Dark btn-md btn-block mb-6' %></li>
