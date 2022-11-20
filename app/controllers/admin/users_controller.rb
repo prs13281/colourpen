@@ -23,6 +23,6 @@ class Admin::UsersController < ApplicationController
 
   #ストロングパラメーター
   def user_params
-    params.require(:user).permit(:name,  :email, :is_deleted)
+    params.require(:user).permit(:name, :introduction, :email, :is_deleted)
   end
 end
