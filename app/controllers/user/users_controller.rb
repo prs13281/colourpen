@@ -13,4 +13,9 @@ class User::UsersController < ApplicationController
 
   def unsubscribe
   end
+
+  #ストロングパラメーター
+  def user_params
+    params.require(:user).permit(:name, :introduction, :email, :is_deleted)
+  end
 end
