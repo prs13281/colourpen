@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User::SessionsController < Devise::SessionsController
+
   before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -12,7 +13,7 @@ class User::SessionsController < Devise::SessionsController
     ## アカウントを取得できなかった場合、このメソッドを終了する
     return if !@user
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @customer.valid_password?(params[:user][:password]) && @user.is_deleted
+    if @user.valid_password?(params[:user][:password]) && @user.is_deleted
       ## 【処理内容3】
       # if @customer.is_deleted == ture
       redirect_to new_user_registration_path
