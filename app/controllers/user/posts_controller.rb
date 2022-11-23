@@ -1,14 +1,27 @@
 class User::PostsController < ApplicationController
   def new
+    @post = Post.new
   end
 
   def index
+    @posts = Post.all
   end
 
   def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      redirect_to post_path(@post.id)
+    else
+      @posts = Post.all
+      @user = current_user
+      render :index
+    end
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
   end
 
   def update
@@ -33,4 +46,15 @@ class User::PostsController < ApplicationController
   def user_params
     params.permit(:name, :email, :password)
   end
+
+  def post_params
+    params.require(:post).permit(:title, :place, :tag_list, :introduction)
+  end
+
+  def correct_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+    redirect_to posts_path unless @user == current_user
+  end
+
 end

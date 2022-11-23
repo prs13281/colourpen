@@ -22,7 +22,7 @@
             <% if user_signed_in? %>
               <p class="aisatu">新たな幸せの発見を</p>
              <li><%= link_to "検索フォーム作る", new_post_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
-             <li><%= link_to "ランキング", ranking_index_path, class:'btn btn-outline-Warning btn-sm btn-block mb-3' %></li>
+             <li><%= link_to "ランキング", rankings_path, class:'btn btn-outline-Warning btn-sm btn-block mb-3' %></li>
              <li><%= link_to "絶景一覧", posts_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
              <li><%= link_to "投稿", new_post_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
              <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class:'btn btn-outline-Secondary btn-md btn-block mb-3' %></li>
@@ -33,7 +33,7 @@
              <li><%= link_to "コメント一覧", admin_comments_path, class:'btn btn-outline-Dark btn-md btn-block mb-6' %></li>
              <li><%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class:'btn btn-outline-Secondary btn-md btn-block mb-3' %></li>
             <% else %>
-             <li><%= link_to "ランキング", ranking_index_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
+             <li><%= link_to "ランキング", rankings_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
              <li><%= link_to "絶景一覧", posts_path, class:'btn btn-outline-Warning btn-sm btn-block mb-3' %></li>
              <li><%= link_to "会員登録", new_user_registration_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
              <li><%= link_to "ログイン", new_user_session_path, class:'btn btn-outline-Secondary btn-sm btn-block mb-3' %></li>
