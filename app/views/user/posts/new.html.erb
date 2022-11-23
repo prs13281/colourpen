@@ -4,7 +4,7 @@
     <div class="col-md-5">
       <%= form_with model: @post do |f| %>
       <div class="form_field">
-        <%= f.label :写真 %>
+        <div><%= f.label :写真 %></div>
         <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
       </div>
       <div class="form_field">
