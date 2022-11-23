@@ -13,15 +13,17 @@ class User::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post.id)
     else
-      @posts = Post.all
-      @user = current_user
-      render :index
+      render :new
     end
   end
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   def update

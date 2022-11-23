@@ -1,37 +1,36 @@
 <div class="container">
   <div class="text-center"><h2>新規投稿</2></div>
   <div class="row">
-    <div class="col-md-4">
-      <%= form_with model: @post, method: :post do |f| %>
-      <table class="table table-borderless">
-        <thead></thead>
-          <tbody>
-            <tr>
-              <td><%= f.label :写真 %></td>
-              <td><%= f.file_field :image, accept: "image/*", class:'form-control-file' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :タイトル %></td>
-              <td><%= f.text_field :name, autofocus: true, id:"name", class:'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :タグ %></td>
-              <td><%= f.text_field :tag_list, autofocus: true, id:"name", class:'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :絶景ポイント %></td>
-              <td><%= f.text_area :introduction, id:"introduction", class:'form-control' %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :場所 %></td>
-              <td><%= f.text_field :place, id:"name", class:'form-control' %></td>
-            </tr>
-          </tbody>
-        </table>
-      <div class = "col-md-6">
-          <%= f.submit "投稿", class:'btn btn-outline-primary' %>
-        <% end %>
+    <div class="col-md-5">
+      <%= form_with model: @post do |f| %>
+      <div class="form_field">
+        <%= f.label :写真 %>
+        <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
       </div>
+      <div class="form_field">
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, autofocus: true, id:"title", class:'form-control' %>
+      </div>
+      <div class="form_field">
+        <%= f.label :タグ %>
+        <%= f.text_field :tag_list, autofocus: true, id:"tag_list", class:'form-control' %>
+      </div>
+    </div>
+    <div class="offset-1 col-md-5">
+      <div class="form_field">
+        <%= f.label :絶景ポイント %>
+        <%= f.text_area :introduction, id:"introduction", class:'form-control' %>
+      </div>
+      <div class="form_field">
+        <%= f.label :場所 %>
+        <%= f.text_field :place, id:"place", class:'form-control' %>
+      </div>
+        <%= f.submit "投稿", class:'btn btn-outline-primary' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "offset-5 col-md-6">
     </div>
   </div>
 </div>

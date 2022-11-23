@@ -4,7 +4,7 @@
       <h3>絶景一覧</h3>
       <div class = "d-flex flex-wrap">
       <% @posts.each do |post| %>
-      <div style = "width: 20%;", class="ml-2">
+      <div style = "width: 30%;", class="ml-2">
         <%= link_to post_path(post.id) do %>
         <%= image_tag post.get_image(180,180) %></br>
         <%= post.title %></br>
