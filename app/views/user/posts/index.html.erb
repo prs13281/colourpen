@@ -3,11 +3,11 @@
     <div class = "col-md-10">
       <h3>絶景一覧</h3>
       <div class = "d-flex flex-wrap">
-      <% @posts.each do |post| %>
-      <div style = "width: 30%;", class="ml-2">
-        <%= link_to post_path(post.id) do %>
-        <%= image_tag post.get_image(180,180) %></br>
-        <%= post.title %></br>
+      <% @posts.each do |posts| %>
+      <div style = "width: 25%;">
+        <%= link_to post_path(posts.id) do %>
+        <%= image_tag posts.get_image(180,180) %></br>
+        <%= posts.title %></br>
         <% end %>
       </div>
       <% end %>

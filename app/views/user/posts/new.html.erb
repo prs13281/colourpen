@@ -2,9 +2,9 @@
   <div class="text-center"><h2>新規投稿</2></div>
   <div class="row">
     <div class="col-md-5">
-      <%= form_with model: @post do |f| %>
+    <%= form_with model: @post, url: posts_path do |f| %>
       <div class="form_field">
-        <div><%= f.label :写真 %></div>
+        <%= f.label :写真 %>
         <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
       </div>
       <div class="form_field">
@@ -27,10 +27,6 @@
       </div>
         <%= f.submit "投稿", class:'btn btn-outline-primary' %>
       <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class = "offset-5 col-md-6">
     </div>
   </div>
 </div>

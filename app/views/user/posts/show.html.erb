@@ -3,20 +3,20 @@
     <div class="col-md-5">
       <div><h2><%= @post.title %></h2></div>
       <%= @user.name %>
-      <%= image_tag @post.get_post_image(300,300) %>
+      <%= image_tag @post.get_image(300,300) %>
       <div><%= @post.tag_list %></div>
-      <% @posts.each do |post| %>
+      <% @post.each do |post| %>
       <div style = "width: 30%;", class="ml-2">
         <%= link_to post_path(post.id) do %>
         <%= image_tag post.get_image(180,180) %></br>
-        <!--コメントとコメントしたユーザーをリンクにする-->
-        <%= link_to _path(post.id) do  %>
+        <% end %>
+        コメントとコメントしたユーザーをリンクにする
+        <%= link_to users_my_page_path(post.id) do  %>
           post.comment
         <% end %>
       </div>
       <% end %>
       <div><%= @post.comment %></div>
-<%=
       <%= form_with model: @post do |f| %>
       <div class="form_field">
         <%= f.label :写真 %>

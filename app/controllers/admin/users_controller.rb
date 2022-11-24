@@ -5,6 +5,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #ユーザーが投稿したものを表示
+    @posts
   end
 
   def edit
