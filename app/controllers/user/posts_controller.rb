@@ -53,7 +53,7 @@ class User::PostsController < ApplicationController
     params.require(:post).permit(:title, :place, :tag_list, :introduction)
   end
 
-  def correct_user
+  def currect_user
     @post = Post.find(params[:id])
     @user = @post.user
     redirect_to posts_path unless @user == current_user

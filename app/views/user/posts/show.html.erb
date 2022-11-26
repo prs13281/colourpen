@@ -1,52 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div><h2><%= @post.title %></h2></div>
-      <%= @user.name %>
-      <%= image_tag @post.get_image(300,300) %>
-      <div><%= @post.tag_list %></div>
-      <% @post.each do |post| %>
+      <%= @user.name %></br>
+      <%= image_tag @post.get_image(200,200) %></br>
+      <%= @post.tag_list %>
+      <!--お気に入りに追加するボタン表示-->
+      <!--コメントとコメントした人表示-->
       <div style = "width: 30%;", class="ml-2">
-        <%= link_to post_path(post.id) do %>
-        <%= image_tag post.get_image(180,180) %></br>
-        <% end %>
-        コメントとコメントしたユーザーをリンクにする
-        <%= link_to users_my_page_path(post.id) do  %>
+      <%# @post.each do |post| %>
+        <!--コメントとコメントしたユーザーをリンクにする-->
+        <%= link_to users_my_page_path(@post.id) do  %>
+        <%= image_tag @post.get_image(40,40) %></br>
           post.comment
         <% end %>
       </div>
-      <% end %>
-      <div><%= @post.comment %></div>
-      <%= form_with model: @post do |f| %>
-      <div class="form_field">
-        <%= f.label :写真 %>
-        <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
-      </div>
-      <div class="form_field">
-        <%= f.label :タイトル %>
-        <%= f.text_field :title, autofocus: true, id:"title", class:'form-control' %>
-      </div>
-      <div class="form_field">
-        <%= f.label :タグ %>
-        <%= f.text_field :tag_list, autofocus: true, id:"tag_list", class:'form-control' %>
-      </div>
+      <%# end %>
+      <div><%#= @post.comment %></div>
     </div>
-    <div class="offset-1 col-md-5">
-      <div class="form_field">
-        <%= f.label :絶景ポイント %>
-        <%= f.text_area :introduction, id:"introduction", class:'form-control' %>
-      </div>
-      <div class="form_field">
-        <%= f.label :場所 %>
-        <%= f.text_field :place, id:"place", class:'form-control' %>
-      </div>
-        <%= f.submit "投稿", class:'btn btn-outline-primary' %>
-      <% end %>
+    <div class = "offset-5 col-md-6">
+      <p>絶景ポイント</p>
+      <%= @post.introduction %>
     </div>
   </div>
   <div class="row">
-    <div class = "offset-5 col-md-6">
-    </div>
   </div>
 </div>
 
