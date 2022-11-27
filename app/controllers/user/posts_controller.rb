@@ -1,6 +1,10 @@
 class User::PostsController < ApplicationController
   def new
-    @post = Post.new
+    @post = current_user.posts.build
+    @post_tag = @post.post_tags.build
+    @post_tag.build_tag
+    @posts = Post.page(params[:page]).per(10)
+    @tag_list=Tag.all
   end
 
   def index
@@ -8,10 +12,15 @@ class User::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
+      # 受け取った値を,で区切って配列にする
+    tag_names = tag_params.dig(:tags, :names).split(',')
+    tag_names.each do |tag_name|
+      @post_tag = @post.post_tags.build
+      @post_tag.build_tag(name: tag_name)
+    end
     if @post.save
-      redirect_to post_path(@post.id)
+      redirect_to post_path(@post)
     else
       render :new
     end
@@ -50,7 +59,16 @@ class User::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :place, :tag_list, :introduction)
+    params.require(:post).permit(
+      :title,
+      :place,
+      :tag_list,
+      :introduction)
+  end
+
+  def tag_params
+    params.require(:post).permit(
+      tags: [:names])
   end
 
   def currect_user

@@ -1,10 +1,14 @@
 class Post < ApplicationRecord
 
   has_one_attached :image
-  has_many :post_tag
-  has_many :comment
-  has_many :favorite
+  #tweetsテーブルから中間テーブルに対する関連付け
+  has_many :post_tags, dependent: :destroy
+  #tweetsテーブルから中間テーブルを介してTagsテーブルへの関連付け
+  has_many :tags, through: :post_tags, dependent: :destroy
+  has_many :comments
+  has_many :favorites
   belongs_to :user
+  validates :name, uniqueness: true, presence: true
 
   def get_image(width, height)
     unless image.attached?

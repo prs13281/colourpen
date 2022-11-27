@@ -12,10 +12,12 @@
         <%= f.label :タイトル %>
         <%= f.text_field :title, autofocus: true, id:"title", class:'form-control' %>
       </div>
-      <div class="form_field">
-        <%= f.label :タグ %>
-        <%= f.text_field :tag_list, autofocus: true, id:"tag_list", class:'form-control' %>
-      </div>
+       <%= f.fields_for :tags do |ff| %>
+        <div class="form_field">
+          <%= ff.label :names %>
+          <%= ff.text_field :names, autofocus: true, class:'form-control' %>
+        </div>
+       <% end %>
     </div>
     <div class="offset-1 col-md-5">
       <div class="form_field">

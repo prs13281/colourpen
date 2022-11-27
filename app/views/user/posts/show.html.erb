@@ -5,7 +5,7 @@
       <div><h2><%= @post.title %></h2></div>
       <%= @user.name %></br>
       <%= image_tag @post.get_image(200,200) %></br>
-      <%= @post.tag_list %>
+      <%= @post.tags.pluck(:name) %>
       <!--お気に入りに追加するボタン表示-->
       <!--コメントとコメントした人表示-->
       <div style = "width: 30%;", class="ml-2">
