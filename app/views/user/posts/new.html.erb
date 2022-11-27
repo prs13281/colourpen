@@ -7,6 +7,7 @@
         <%= f.label :写真 %>
         <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
       </div>
+      <!--<div id="new-image"></div>-->  <!--画像表示の追記-->
       <div class="form_field">
         <%= f.label :タイトル %>
         <%= f.text_field :title, autofocus: true, id:"title", class:'form-control' %>
@@ -22,8 +23,49 @@
         <%= f.text_area :introduction, id:"introduction", class:'form-control' %>
       </div>
       <div class="form_field">
-        <%= f.label :場所 %>
-        <%= f.text_field :place, id:"place", class:'form-control' %>
+        <input id="address" type="textbox" value="GeekSalon">
+        <input type="button" value="Encode" onclick="codeAddress()">
+        <div id='map'></div>
+        <style>
+        #map {
+          height: 280px;
+          width: 370px;
+        }
+        </style>
+        <script>
+        let map
+        function initMap(){
+          geocoder = new google.maps.Geocoder()
+
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 40.7828, lng:-73.9653},
+            zoom: 12,
+          });
+
+          marker = new google.maps.Marker({
+            position:  {lat: 40.7828, lng:-73.9653},
+            map: map
+          });
+        }
+        let geocoder
+        function codeAddress(){
+          let inputAddress = document.getElementById('address').value;
+          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location
+              });
+            } else {
+              alert('該当する結果がありませんでした：' + status);
+            }
+          });
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=SECRET_KEY&callback=initMap" async defer></script>
+        <%#= f.label :場所 %>
+        <%#= f.text_field :place, id:"place", class:'form-control' %>
       </div>
         <%= f.submit "投稿", class:'btn btn-outline-primary' %>
       <% end %>
