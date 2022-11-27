@@ -1,6 +1,8 @@
 class User::PostsController < ApplicationController
   def new
+    # current_userからbuildで書くとuser_id作られる
     @post = current_user.posts.build
+    # postする時にtagが作られるようにする
     @post_tag = @post.post_tags.build
     @post_tag.build_tag
     @posts = Post.page(params[:page]).per(10)
@@ -15,6 +17,7 @@ class User::PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
       # 受け取った値を,で区切って配列にする
     tag_names = tag_params.dig(:tags, :names).split(',')
+     # タグを複数投稿できるように
     tag_names.each do |tag_name|
       @post_tag = @post.post_tags.build
       @post_tag.build_tag(name: tag_name)
@@ -28,6 +31,7 @@ class User::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    #投稿した人の名前表示
     @user = @post.user
   end
 
@@ -55,7 +59,10 @@ class User::PostsController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email, :password)
+    params.permit(
+      :name,
+      :email,
+      :password)
   end
 
   def post_params
