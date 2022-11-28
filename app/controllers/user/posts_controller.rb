@@ -70,6 +70,7 @@ class User::PostsController < ApplicationController
       :title,
       :place,
       :tag_list,
+      :image,
       :introduction)
   end
 
