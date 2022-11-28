@@ -5,7 +5,8 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   #tweetsテーブルから中間テーブルを介してTagsテーブルへの関連付け
   has_many :tags, through: :post_tags, dependent: :destroy
-  has_many :comments
+  # userが投稿を削除したら、コメントも一緒に削除される
+  has_many :comments, dependent: :destroy
   has_many :favorites
   belongs_to :user
 

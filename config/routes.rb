@@ -25,7 +25,10 @@ Rails.application.routes.draw do
     resources :relationships,only: [:index,:create,:destroy]
     resources :favourites,only: [:index,:destroy]
     resources :rankings,only: [:index]
-    resources :posts,only: [:new,:index,:create,:show,:update,:destroy]
+    resources :posts,only: [:new,:index,:create,:show,:update,:destroy] do
+    # どの投稿に紐づいたコメントなのかURLが判別できるようにする
+     resources :comments, only: [:create, :destroy]
+    end
     get 'users/my_page' => 'users#show'
     get 'users/my_page/edit' => 'users#edit'
     patch 'users/my_page/edit' => 'users#update'
