@@ -7,24 +7,24 @@ class User::CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     # コメント投稿者(user)のidを代入
     @comment.user_id = current_user.id
+    @comments = @post.comments
     if @comment.save
       flash.now[:notice] = "コメントの投稿に成功しました。"
-      render :show
     else
       flash.now[:alert] ="コメントの投稿に失敗しました。"
-      render :show
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
+    #@comment.post_idから親のpost情報を取得し@comments = @post.comments
     @comment.destroy
     flash.now[:notice] = "コメントを削除しました。"
     render :index
   end
 
   private
-   def comment_params
+    def comment_params
       params.require(:comment).permit(:comment, :user_id, :post_id)
     end
 end

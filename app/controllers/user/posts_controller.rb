@@ -33,9 +33,9 @@ class User::PostsController < ApplicationController
     @post = Post.find(params[:id])
     #投稿した人の名前表示
     @user = @post.user
-    @travel_record = TravelRecord.find(params[:id])
+    @post = Post.find(params[:id])
     # コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
-    @comments = @travel_record.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :desc)
     # コメントの作成
     @comment = Comment.new
   end
