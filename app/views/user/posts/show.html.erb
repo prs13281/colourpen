@@ -18,18 +18,12 @@
         <%= f.text_field :comment, autofocus: true, class:'form-control' %>
         <%= f.submit "投稿", class:'btn btn-outline-primary' %>
       <% end %>
-
-
-      <%# @post.each do |post| %>
         <!--コメントしたユーザーの画像表示して、名前と共にリンクにする-->
         <%= link_to users_my_page_path(@post.id) do  %>
         <%= image_tag @post.get_image(40,40) %></br>
           post.comment
         <% end %>
       </div>
-      <%# end %>
-      <div><%#= @post.comment %></div>
-    </div>
     <div class = "offset-1 col-md-6">
       <p>絶景ポイント</p>
       <%= @post.introduction %></br>

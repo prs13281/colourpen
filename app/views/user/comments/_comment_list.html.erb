@@ -1,4 +1,14 @@
+<!--each文をテンプレート化-->
 <% comments.each do |comment| %>
   <%= comment.comment %>
-  <%# 削除ボタンが必用 %>
+  <!--サインインしているユーザーのみに編集、削除ボタン表示-->
+  <% if user_signed_in? %>
+    <% if current_user.id == c.user_id %>
+      <%#= link_to "編集", _path(@post, c) %>
+      <%#= link_to "削除", _path(@post, c), method: :delete %>
+    <% elsif current_user.id == @post.user_id then %>
+      <%#= link_to "削除", post_comment_path(@post, c), method: :delete %>
+    <% end %> 
+  <% end %> 
+  <%= link_to "削除する", post_comment_path(.id), method: :delete, class:'btn btn-danger' %>
 <% end %>
