@@ -1,7 +1,7 @@
 <div class="container">
   <script src="http://maps.google.com/maps/api/js?key=SECRET_KEY&language=ja"></script>
   <div class="row">
-    <div class="offset-1 col-md-4">
+    <div class="col-md-4">
       <h2><%= @post.title %></h2></br>
       <p><%= @user.name %></p></br>
       <%= image_tag @post.get_image(200,200) %></br>
@@ -14,7 +14,7 @@
         <%= render "user/comments/comment_list", comments: @comments %>
       </div>
       <div style = "width: 30%;", class="ml-2">
-      <%= form_with model: @comment, url:post_comments_path(@post), local: false do |f| %>
+      <%= form_with model: [@post,@comment], url:post_comments_path(@post), local: false do |f| %>
         <%= f.text_field :comment, autofocus: true, class:'form-control' %>
         <%= f.submit "投稿", class:'btn btn-outline-primary' %>
       <% end %>
@@ -24,7 +24,8 @@
           post.comment
         <% end %>
       </div>
-    <div class = "offset-1 col-md-6">
+    </div>
+    <div class = "offset-1 col-md-5">
       <p>絶景ポイント</p>
       <%= @post.introduction %></br>
       <div id='map'></div>
@@ -67,7 +68,6 @@
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=SECRET_KEY&callback=initMap" async defer></script>
       </div>
-    </div>
   </div>
   <div class="row">
   </div>
