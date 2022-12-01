@@ -38,6 +38,8 @@ class User::PostsController < ApplicationController
     @comments = @post.comments.order(created_at: :desc)
     # コメントの作成
     @comment = Comment.new
+    # コメントしたユーザー
+
   end
 
   def edit
