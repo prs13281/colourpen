@@ -1,1 +1,1 @@
-$('#favorite_<%= @post.id %>').html('<%= link_to "いいね済", favorite_path(@favorite.id), method: :delete, remote:true, style: "color: red;" %><%= @post.favorites.size %>');
+$('#favorite_<%= @post.id %>').html('<%= link_to "お気に入り済", favorite_path(@favorite.id), method: :delete, remote:true, style: "color: green;" %><%= @post.favorites.size %>');
