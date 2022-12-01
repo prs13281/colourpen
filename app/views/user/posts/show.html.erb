@@ -7,7 +7,15 @@
       <%= image_tag @post.get_image(200,200) %></br>
       <!--タグの表示-->
       <%= @post.tags.pluck(:name) %>
-      <!--お気に入りに追加するボタン表示--></br>
+      <!--お気に入りに追加するボタン表示-->
+  <div id="favorite_<%= @post.id %>">
+    <% if favorite = @post.favorites.find_by(user_id: current_user.id) %>
+      <%= link_to "いいね済", favorite_path(favorite.id), remote:true, method: :delete, style: "color: red;" %>
+    <% else %>
+      <%= link_to "いいね", favorites_path(post_id: @post), remote:true, method: :post %>
+    <% end %>
+    <%= @post.favorites.size %>
+  </div>
       <!--コメントとコメントした人表示-->
 
       <div style="width: 30%;", class="ml-2" id="comment_list">

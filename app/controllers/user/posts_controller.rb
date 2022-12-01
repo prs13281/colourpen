@@ -30,10 +30,10 @@ class User::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    # 投稿に対して、いいねを紐付ける
+    @post = Post.includes(:favorites).find(params[:id])
     #投稿した人の名前表示
     @user = @post.user
-    @post = Post.find(params[:id])
     # コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
     @comments = @post.comments.order(created_at: :desc)
     # コメントの作成

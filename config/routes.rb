@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get'about' => 'homes#about', as:'about'
     resources :tags,only: [:new,:create,:destroy]
     resources :relationships,only: [:index,:create,:destroy]
-    resources :favourites,only: [:index,:destroy]
+    resources :favorites,only: [:create,:destroy]
     resources :rankings,only: [:index]
     resources :posts,only: [:new,:index,:create,:show,:update,:destroy] do
     # どの投稿に紐づいたコメントなのかURLが判別できるようにする
