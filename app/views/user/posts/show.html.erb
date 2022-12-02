@@ -18,6 +18,7 @@
   </div>
       <!--コメントとコメントした人表示-->
       <div style="width: 30%;", class="ml-2" id="comment_list">
+        <%= @comments.user.name %>
         <%= render "user/comments/comment_list", comments: @comments %>
       </div>
       <div style = "width: 30%;", class="ml-2">
