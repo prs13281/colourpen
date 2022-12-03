@@ -1,7 +1,8 @@
 <!--each文をテンプレート化-->
 <% comments.each do |comment| %>
   <%= comment.comment %>
-  <%= link_to users_my_page_path(comment.user.id) do  %>
+  <!--コメントしたユーザーのプロフィール画像と名前。ユーザーページに遷移する-->
+  <%= link_to user_path(comment.user.id) do  %>
     <%= image_tag comment.user.get_profile_image(30,30) %>
     <%= comment.user.name %>
   <% end %>

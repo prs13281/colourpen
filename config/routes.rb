@@ -25,15 +25,16 @@ Rails.application.routes.draw do
     resources :relationships,only: [:index,:create,:destroy]
     resources :favorites,only: [:create,:destroy]
     resources :rankings,only: [:index]
-    resources :posts,only: [:new,:index,:create,:show,:edit,:update,:destroy] do
-    # どの投稿に紐づいたコメントなのかURLが判別できるようにする
-     resources :comments, only: [:create, :destroy]
-    end
-    get 'users/my_page' => 'users#show'
+    get 'users/my_page' => 'users#my_page'
     get 'users/my_page/edit' => 'users#edit'
     patch 'users/my_page/edit' => 'users#update'
     get 'users/withdraw' => 'users#withdraw'
     patch 'users/unsubscribe' => 'users#unsubscribe'
+    resources :users,only: [:show]
+    resources :posts,only: [:new,:index,:create,:show,:edit,:update,:destroy] do
+    # どの投稿に紐づいたコメントなのかURLが判別できるようにする
+     resources :comments, only: [:create, :destroy]
+    end
   end
 
   # devise_for :admins

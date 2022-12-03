@@ -1,7 +1,12 @@
 class User::UsersController < ApplicationController
-  def show
+  before_action :redirect_my_page, only: [:show]
+
+  def my_page
     @user = current_user
-    # @posts = current_user.posts
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -18,17 +23,23 @@ class User::UsersController < ApplicationController
   end
 
   def unsubscribe
-    @users = current_user
-    @users.update(is_deleted: true)
+    @user = current_user
+    @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
+
+  private
 
   #ストロングパラメーター
   def user_params
     params.require(:user).permit(:name, :introduction, :email, :profile_image)
   end
 
+  def redirect_my_page
+    @user = User.find(params[:id])
+    redirect_to users_my_page_path if @user == current_user
+  end
 
 end

@@ -14,7 +14,7 @@
       </div>
        <%= f.fields_for :tags do |ff| %>
         <div class="form_field">
-          <%= ff.label :names %>
+          <%= ff.label :"タグ（,で区切って複数タグ付け）" %>
           <%= ff.text_field :names, autofocus: true, class:'form-control' %>
         </div>
        <% end %>
