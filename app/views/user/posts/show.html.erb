@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class = "offset-1 col-md-5">
-    <%= link_to "編集", edit_post_path(post_id: @post) %>
+    <%= link_to "編集", edit_post_path(post_id: @post), class:'btn btn-outline-primary'%>
       <p>絶景ポイント</p>
       <%= @post.introduction %></br>
       <div id='map'></div>

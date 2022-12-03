@@ -7,7 +7,7 @@ class Tag < ApplicationRecord
   has_many :posts, through: :post_tag, dependent: :destroy
 
   validates :name, uniqueness: true, presence: true
-  
+
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -25,6 +25,6 @@ class Tag < ApplicationRecord
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(name: new)
       self.tags << new_post_tag
-    end  
+    end
   end
 end
