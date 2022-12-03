@@ -1,6 +1,10 @@
 <!--each文をテンプレート化-->
 <% comments.each do |comment| %>
   <%= comment.comment %>
+  <%= link_to users_my_page_path(comment.user.id) do  %>
+    <%= image_tag comment.user.get_profile_image(30,30) %>
+    <%= comment.user.name %>
+  <% end %>
   <!--サインインしているユーザーのみに編集、削除ボタン表示-->
   <%# if user_signed_in? %>
     <%# if current_user.id == c.user_id %>
@@ -9,5 +13,7 @@
       <%#= link_to "削除", post_comment_path(@post, c), method: :delete %>
     <%# end %>
   <%# end %>
-  <%= link_to "削除する", post_comment_path(@post.id, comment.id), method: :delete, remote: true, class:'btn btn-danger' %>
+  <%# if comment.user == current_user %>
+    <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete, remote: true, class:'btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;' %></br>
+  <%# end %>
 <% end %>

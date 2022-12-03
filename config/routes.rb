@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :relationships,only: [:index,:create,:destroy]
     resources :favorites,only: [:create,:destroy]
     resources :rankings,only: [:index]
-    resources :posts,only: [:new,:index,:create,:show,:update,:destroy] do
+    resources :posts,only: [:new,:index,:create,:show,:edit,:update,:destroy] do
     # どの投稿に紐づいたコメントなのかURLが判別できるようにする
      resources :comments, only: [:create, :destroy]
     end
