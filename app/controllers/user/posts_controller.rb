@@ -15,18 +15,28 @@ class User::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-      # 受け取った値を,で区切って配列にする
     tag_names = tag_params.dig(:tags, :names).split(',')
-     # タグを複数投稿できるように
-    tag_names.each do |tag_name|
-      @post_tag = @post.post_tags.build
-      @post_tag.build_tag(name: tag_name)
-    end
     if @post.save
+      @post.save_tag(tag_names)
       redirect_to post_path(@post)
     else
       render :new
     end
+
+    # @post = current_user.posts.build(post_params)
+    #   # 受け取った値を,で区切って配列にする
+    # tag_names = tag_params.dig(:tags, :names).split(',')
+    # # タグを複数投稿できるように
+    # tag_names.each do |tag_name|
+    #   @post_tag = @post.post_tags.build
+    #   @post_tag.build_tag(name: tag_name)
+    # end
+
+    # if @post.save
+    #   redirect_to post_path(@post)
+    # else
+    #   render :new
+    # end
   end
 
   def show
@@ -38,8 +48,6 @@ class User::PostsController < ApplicationController
     @comments = @post.comments.order(created_at: :desc)
     # コメントの作成
     @comment = Comment.new
-    # コメントしたユーザー
-
   end
 
   def edit
@@ -47,9 +55,26 @@ class User::PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+    tag_names = tag_params.dig(:tags, :names).split(',')
+     # タグを複数投稿できるように
+    tag_names.each do |tag_name|
+      @post_tag = @post.post_tags.build
+      @post_tag.build_tag(name: tag_name)
+    end
+
+    if @post.update(post_params)
+     redirect_to post_path(@post.id), notice: 'You have updated book successfully'
+    else
+     render :edit
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+     redirect_to users_my_page_path
+    end
   end
 
   #ゲストログイン用
