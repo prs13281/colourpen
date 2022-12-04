@@ -7,7 +7,7 @@ class User::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    # user_idがユーザーのお気に入りのレコードを
+    # user_idがユーザーのお気に入りのレコードを取得
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
   end
@@ -44,6 +44,7 @@ class User::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :email, :profile_image)
   end
 
+  # ログインユーザーなら、マイページに遷移する
   def redirect_my_page
     @user = User.find(params[:id])
     redirect_to users_my_page_path if @user == current_user

@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     root to:"homes#top"
     get'about' => 'homes#about', as:'about'
     resources :tags,only: [:new, :create, :destroy]
-    resources :relationships,only: [:index, :create, :destroy]
     resources :favorites,only: [:create, :destroy]
     resources :rankings,only: [:index]
     get 'users/my_page' => 'users#my_page'
@@ -31,10 +30,13 @@ Rails.application.routes.draw do
     get 'users/withdraw' => 'users#withdraw'
     patch 'users/unsubscribe' => 'users#unsubscribe'
     resources :users,only: [:show]do
-     # memberでuser_idが含まれるルーティングになる
       member do
         get :favorites
       end
+      resource :relationships,only: [:create, :destroy]
+      get 'followed' => 'relationships#followed', as: 'followed'
+      get 'follower' => 'relationships#follower', as: 'follower'
+     # memberでuser_idが含まれるルーティングになる
     end
     resources :posts,only: [:new, :index, :create, :show, :edit, :update, :destroy] do
     # どの投稿に紐づいたコメントなのかURLが判別できるようにする

@@ -1,11 +1,5 @@
 class User::CommentsController < ApplicationController
 
-  # def edit
-  #   @post = Post.find(params[:post_id])
-  #   @comment = Comment.find(params[:id])
-  # end
-
-
   def create
     # コメントをする対象の投稿(travel_record)のインスタンスを作成
     @post =Post.find(params[:post_id])
