@@ -16,9 +16,7 @@
           編集する
         <% end %>
       <% end %>
-      <%= link_to favorites_path(@user.id),  class: 'btn btn-outline-dark btn-block' do %>
-        お気に入り写真
-      <% end %>
+      <%= link_to "お気に入り写真", favorites_user_path(@user), class: 'btn btn-outline-dark btn-block' %>
       <!--リンク未設定-->
       <%= link_to users_my_page_edit_path(@user.id),  class: 'btn btn-outline-dark btn-block' do %>
         フォロー中

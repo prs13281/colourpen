@@ -5,6 +5,13 @@ class User::UsersController < ApplicationController
     @user = current_user
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    # user_idがユーザーのお気に入りのレコードを
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
+
   def show
     @user = User.find(params[:id])
   end

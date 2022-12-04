@@ -1,0 +1,17 @@
+<div class="container">
+  <div class = "row">
+    <div class = "col-md-12">
+      <h3>お気に入り一覧</h3>
+      <div class = "d-flex flex-wrap">
+      <% @favorite_posts.each do |post| %>
+      <div style = "width: 20%;">
+        <%= link_to post_path(post.id) do %>
+        <%= image_tag post.get_image(180,180) %></br>
+        <%= post.title %></br>
+        <% end %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

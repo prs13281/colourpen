@@ -13,27 +13,32 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :posts,only: [:edit,:update]
-    resources :comments,only: [:index,:show,:edit,:update]
-    resources :users,only: [:index,:show,:edit,:update]
+    resources :posts,only: [:edit, :update]
+    resources :comments,only: [:index, :show, :edit, :update]
+    resources :users,only: [:index, :show, :edit, :update]
   end
 
   scope module: :user do
     root to:"homes#top"
     get'about' => 'homes#about', as:'about'
-    resources :tags,only: [:new,:create,:destroy]
-    resources :relationships,only: [:index,:create,:destroy]
-    resources :favorites,only: [:create,:destroy]
+    resources :tags,only: [:new, :create, :destroy]
+    resources :relationships,only: [:index, :create, :destroy]
+    resources :favorites,only: [:create, :destroy]
     resources :rankings,only: [:index]
     get 'users/my_page' => 'users#my_page'
     get 'users/my_page/edit' => 'users#edit'
     patch 'users/my_page/edit' => 'users#update'
     get 'users/withdraw' => 'users#withdraw'
     patch 'users/unsubscribe' => 'users#unsubscribe'
-    resources :users,only: [:show]
-    resources :posts,only: [:new,:index,:create,:show,:edit,:update,:destroy] do
+    resources :users,only: [:show]do
+     # memberでuser_idが含まれるルーティングになる
+      member do
+        get :favorites
+      end
+    end
+    resources :posts,only: [:new, :index, :create, :show, :edit, :update, :destroy] do
     # どの投稿に紐づいたコメントなのかURLが判別できるようにする
-     resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
 

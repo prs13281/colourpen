@@ -59,26 +59,12 @@ class User::PostsController < ApplicationController
     @post = Post.find(params[:id])
     # 入力されたタグを受け取る
     tag_names = tag_params.dig(:tags, :names).split(',')
-    # もしpostの情報が更新されたら
     if @post.update(post_params)
         @post.save_tag(tag_names)
         redirect_to post_path(@post.id), notice: '更新完了しました:)'
     else
       render :edit
     end
-    # @post = Post.find(params[:id])
-    # tag_names = tag_params.dig(:tags, :names).split(',')
-    # # タグを複数投稿できるように
-    # tag_names.each do |tag_name|
-    #   @post_tag = @post.post_tags.build
-    #   @post_tag.build_tag(name: tag_name)
-    # end
-
-    # if @post.update(post_params)
-    # redirect_to post_path(@post.id), notice: 'You have updated book successfully'
-    # else
-    # render :edit
-    # end
   end
 
   def destroy
