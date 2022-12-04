@@ -61,18 +61,8 @@ class User::PostsController < ApplicationController
     tag_names = tag_params.dig(:tags, :names).split(',')
     # もしpostの情報が更新されたら
     if @post.update(post_params)
-      if tag_params.dig(:tags, :names) == "公開"
-        # このpost_idに紐づいていたタグを@oldに入れる
-        @old_relations = PostTag.where(post_id: @post.id)
-        # それらを取り出し、消す。消し終わる
-        @old_relations.each do |relation|
-        relation.delete
-        end
-         @post.save_tag(tag_names)
+        @post.save_tag(tag_names)
         redirect_to post_path(@post.id), notice: '更新完了しました:)'
-      else redirect_to posts_path, notice: '下書きに登録しました。'
-      end
-      
     else
       render :edit
     end

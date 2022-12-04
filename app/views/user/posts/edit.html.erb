@@ -2,6 +2,7 @@
   <div class="text-center"><h2>投稿編集</2></div>
   <div class="row">
     <div class="col-md-5">
+ 
     <%= form_with model: @post, url:post_path(@post.id), method: :patch do |f| %>
       <div class="form_field">
         <%= f.label :写真 %>
@@ -15,7 +16,7 @@
        <%= f.fields_for :tags do |ff| %>
         <div class="form_field">
           <%= ff.label :"タグ（,で区切って複数タグ付け）" %>
-          <%= ff.text_field :names, autofocus: true, class:'form-control' %>
+          <%= ff.text_field :names, autofocus: true, class:'form-control', value: @post.tags.pluck(:name).join(", b") %>
         </div>
        <% end %>
     </div>
