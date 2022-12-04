@@ -3,7 +3,9 @@
   <div class="row">
     <div class="col-md-5">
       <h2><%= @post.title %></h2></br>
-      <p><%= @user.name %></p></br>
+      <%= link_to user_path(@user.id), class: 'btn btn-outline-dark btn-block' do %>
+        <%= @user.name %></br>
+      <% end %>
       <%= image_tag @post.get_image(200,200) %></br>
       <!--タグの表示-->
       <%= @post.tags.pluck(:name) %>

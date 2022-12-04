@@ -17,27 +17,21 @@
         <% end %>
       <% end %>
       <%= link_to "お気に入り写真", favorites_user_path(@user), class: 'btn btn-outline-dark btn-block' %>
-      <!--リンク未設定-->
-      <%= link_to user_followed_path(@user),  class: 'btn btn-outline-dark btn-block' do %>
-        フォロー中
-      <% end %>
-      <!--リンク未設定-->
-      <%= link_to user_follower_path(@user),  class: 'btn btn-outline-dark btn-block' do %>
-        フォロワー
-      <% end %>
+      <%= link_to "フォロー中", user_followings_path(@user),  class: 'btn btn-outline-dark btn-block' %>
+      <%= link_to "フォロワー", user_followers_path(@user),  class: 'btn btn-outline-dark btn-block' %>
     </div>
     <!--ログインユーザーの投稿写真-->
     <div class = "offset-1 col-md-5">
       <div class = "d-flex flex-wrap">
         <!--投稿写真並べて表示-->
-        <%#= @posts.each do |post| %>
-        <!--<div style = "width: 20%;", class="ml-2">-->
-          <%#= link_to post_path(post.id) do %>
-          <%#= image_tag post.get_image(150,150), size: "150x150" %></br>
-          <%#= post.name %></br>
-          <%# end %>
+        <% @posts.each do |post| %>
+        <div style = "width: 20%;", class="ml-2">
+          <%= link_to post_path(post.id) do %>
+          <%= image_tag post.get_image(90,90), size: "90x90" %></br>
+          <%= post.title %></br>
+          <% end %>
         </div>
-        <%# end %>
+        <% end %>
       </div>
   </div>
 </div>

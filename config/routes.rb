@@ -29,14 +29,14 @@ Rails.application.routes.draw do
     patch 'users/my_page/edit' => 'users#update'
     get 'users/withdraw' => 'users#withdraw'
     patch 'users/unsubscribe' => 'users#unsubscribe'
-    resources :users,only: [:show]do
+    resources :users do
+     # memberでuser_idが含まれるルーティングになる
       member do
         get :favorites
       end
-      resource :relationships,only: [:create, :destroy]
-      get 'followed' => 'relationships#followed', as: 'followed'
-      get 'follower' => 'relationships#follower', as: 'follower'
-     # memberでuser_idが含まれるルーティングになる
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
     resources :posts,only: [:new, :index, :create, :show, :edit, :update, :destroy] do
     # どの投稿に紐づいたコメントなのかURLが判別できるようにする
