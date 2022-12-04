@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #ユーザーが投稿したものを表示
-    # @posts = @user.post
+    @posts = @user.posts
   end
 
   def edit
