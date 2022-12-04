@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-5">
+      <h2><%= @post.title %></h2></br>
+      <%= link_to user_path(@user.id), class: 'btn btn-outline-dark btn-block' do %>
+        <%= @user.name %></br>
+      <% end %>
+      <%= image_tag @post.get_image(200,200) %></br>
+      <!--タグの表示-->
+      <%= @post.tags.pluck(:name) %>
+      <!--コメントとコメントした人表示-->
+      <div style="width: 30%;", class="ml-2" id="comment_list">
+        <%#= @comments.user.name %>
+        <%= render "user/comments/comment_list", comments: @comments %>
+      </div>
+      </div>
+    </div>
+    <div class = "offset-1 col-md-5">
+    <%= link_to "編集", edit_post_path(post_id: @post), class:'btn btn-outline-primary'%>
+      <p>絶景ポイント</p>
+      <%= @post.introduction %></br>
+      <div id='map'></div>
+        <style>
+        #map {
+          height: 130px;
+          width: 210px;
+        }
+        </style>
+        <script>
+        let map
+        function initMap(){
+          geocoder = new google.maps.Geocoder()
+
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 40.7828, lng:-73.9653},
+            zoom: 12,
+          });
+
+          marker = new google.maps.Marker({
+            position:  {lat: 40.7828, lng:-73.9653},
+            map: map
+          });
+        }
+        let geocoder
+        function codeAddress(){
+          let inputAddress = document.getElementById('address').value;
+          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location
+              });
+            } else {
+              alert('該当する結果がありませんでした：' + status);
+            }
+          });
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=SECRET_KEY&callback=initMap" async defer></script>
+      </div>
+  </div>
+  <div class="row">
+  </div>
+</div>
