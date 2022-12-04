@@ -1,2 +1,12 @@
-<h1>User::Rankings#index</h1>
-<p>Find me in app/views/user/rankings/index.html.erb</p>
+<!--配列の1つ目から順に1位、２位と表示される-->
+<% post_ranks.each.with_index(1) do |post, i| %>
+  第<%= i %>位
+:
+<!--表示したいカラムをご自由に-->
+<%= @user_post_rankings %>
+<%= @post_comment_ranking %>
+:
+<% end %>
+
+<!--<h1>User::Rankings#index</h1>-->
+<!--<p>Find me in app/views/user/rankings/index.html.erb</p>-->

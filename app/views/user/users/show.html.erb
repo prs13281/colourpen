@@ -9,6 +9,8 @@
       <%= image_tag @user.get_profile_image(230,230) %>
       <div><h4><%= @user.name %></h4></div>
       <div><h5><%= @user.introduction %></h5></div>
+    </div>
+    <div class = "offset-1 col-md-4">
       <%= link_to "お気に入り写真", favorites_user_path(@user), class: 'btn btn-outline-dark btn-block' %>
        <!--フォローボタン-->
       <% if current_user.following?(@user) %>
