@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :posts,only: [:show]
     resources :comments,only: [:index, :show, :edit, :update, :destroy]
-    resources :users,only: [:index, :show, :edit, :update] do 
+    resources :users,only: [:index, :show, :edit, :update] do
+      # adminから投稿削除した時にuser_idを辿ってredirectするためネストする
       resources :posts,only: [:destroy]
     end
     resources :tags,only: [:new,:create, :update, :destroy]

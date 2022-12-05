@@ -1,12 +1,25 @@
-<!--配列の1つ目から順に1位、２位と表示される-->
-<% post_ranks.each.with_index(1) do |post, i| %>
-  第<%= i %>位
-:
-<!--表示したいカラムをご自由に-->
-<%= @user_post_rankings %>
-<%= @post_comment_ranking %>
-:
+<% @favorite_ranks.each.with_index(1) do |post, i| %>
+  <h6>第<%= i %>位</h6>
+  <%= link_to post_path(post.id) do %>
+    <%= image_tag post.get_image(200,200) %>  <% end %>
+  <h6>
+    <%= link_to post_path(post.id) do %>
+      <%= post.title %>
+    <% end %>
+  </h6>
 <% end %>
+<% @comment_ranks.each.with_index(1) do |post, i| %>
+<h6>第<%= i %>位</h6>
+  <%= link_to post_path(post.id) do %>
+    <%= image_tag post.get_image(200,200) %>  <% end %>
+  <h6>
+    <%= link_to post_path(post.id) do %>
+      <%= post.title %>
+    <% end %>
+  </h6>
+<% end %>
+
+
 
 <!--<h1>User::Rankings#index</h1>-->
 <!--<p>Find me in app/views/user/rankings/index.html.erb</p>-->

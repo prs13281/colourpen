@@ -12,7 +12,6 @@ class Admin::PostsController < ApplicationController
   end
 
   def destroy
-    # 投稿がuser_idをもってるから不必要
     user = User.find(params[:user_id])
     post = Post.find(params[:id])
     if post.destroy
