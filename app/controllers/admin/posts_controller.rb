@@ -12,10 +12,11 @@ class Admin::PostsController < ApplicationController
   end
 
   def destroy
-    # @user = User.find(params[:id])
-    @post = Post.find(params[:id])
-    if @post.destroy
-     redirect_to admin_user_path
+    # 投稿がuser_idをもってるから不必要
+    user = User.find(params[:user_id])
+    post = Post.find(params[:id])
+    if post.destroy
+     redirect_to admin_user_path(user)
     end
   end
 
