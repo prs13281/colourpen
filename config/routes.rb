@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     # どの投稿に紐づいたコメントなのかURLが判別できるようにする
       resources :comments, only: [:create, :destroy]
     end
+    # 検索フォーム作成
+    get 'search' => 'posts#search'
   end
 
   # devise_for :admins

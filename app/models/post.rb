@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   #   end
   # end
   def save_tag(sent_tags)
-    
+
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
     new_tags = sent_tags - current_tags
@@ -43,6 +43,11 @@ class Post < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(name: new)
       self.tags << new_post_tag
     end
+  end
+
+  def self.search(keyword)
+    # titleかtagで検索(カラム名を記入)
+    where(["title like? OR tag_list like?", "%#{keyword}%", "%#{keyword}%"])
   end
 
 

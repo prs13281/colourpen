@@ -6,11 +6,17 @@ class User::PostsController < ApplicationController
     @post_tag = @post.post_tags.build
     @post_tag.build_tag
     @posts = Post.page(params[:page]).per(10)
-    @tag_list=Tag.all
+    @tag_list = Tag.all
   end
 
   def index
     @posts = Post.all
+  end
+
+  def search
+    @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
+    render 'index'
   end
 
   def create
