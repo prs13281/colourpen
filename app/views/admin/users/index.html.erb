@@ -13,17 +13,17 @@
             </tr>
         </thead>
         <tbody>
-          <% @users.each do |users| %>
+          <% @users.each do |user| %>
             <tr>
               <th></th>
-              <th><%= users.id %></th>
+              <th><%= user.id %></th>
               <th>
-                <%= link_to admin_user_path(users.id) do %>
-                <%= users.name %>
+                <%= link_to admin_user_path(user.id) do %>
+                <%= user.name %>
                 <% end %>
               </th>
               <th>
-                <% if users.is_deleted == true %>
+                <% if user.is_deleted == true %>
                   退会
                 <% else %>
                   有効

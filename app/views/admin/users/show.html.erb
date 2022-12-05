@@ -54,7 +54,7 @@
   <div class="row">
     <% @posts.each do |post| %>
       <div style = "width: 15%;", class="ml-2">
-      <%= link_to edit_admin_post_path(post.id) do %>
+      <%= link_to admin_post_path(post.id) do %>
         <%= image_tag post.get_image(120,120), size: "120x120" %></br>
         <%= post.title %></br>
       <% end %>
@@ -73,3 +73,4 @@
 
 <!--<h1>Admin::Users#show</h1>-->
 <!--<p>Find me in app/views/admin/users/show.html.erb</p>-->
+<%#= link_to "削除する", admin_post_path(@post.id), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-danger' %>
