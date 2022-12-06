@@ -1,27 +1,102 @@
-<h4>お気に入り数</h4>
-<% @favorite_ranks.each.with_index(1) do |post, i| %>
-  <h6>第<%= i %>位</h6>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image(200,200) %>  <% end %>
-  <h6>
-    <%= link_to post_path(post.id) do %>
-      <%= post.title %>
-    <% end %>
-  </h6>
-<% end %>
-<h4>コメント数</h4>
-<% @comment_ranks.each.with_index(1) do |post, i| %>
-<h6>第<%= i %>位</h6>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image(200,200) %>  <% end %>
-  <h6>
-    <%= link_to post_path(post.id) do %>
-      <%= post.title %>
-    <% end %>
-  </h6>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h3>お気に入り数</h3>
+      <% lastFavorite = 0 %>
+      <% j = 1 %>
+      <% @favorite_ranks.each.with_index(1) do |post, index| %>
+        <% if index == 1 %>
+          <% lastFavorite = post.favorites.count %>
+        <% end %>
+        <% if post.favorites.count != lastFavorite %>
+        <!--順位とお気に入り数を更新する-->
+         <% lastFavorite = post.favorites.count %>
+          <% j = index %>
+          <h5>第<%= j %>位</h5>
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_image(200,200) %>
+          <% end %>
+          <h3>
+          <%= link_to post_path(post.id) do %>
+            <%= post.title %>
+          <% end %>
+          </h3>
+        <% else %>
 
+          <% lastFavorite = post.favorites.count %>
+          <h4>第<%= j %>位</h4>
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_image(200,200) %>
+          <% end %>
+          <h3>
+          <%= link_to post_path(post.id) do %>
+            <%= post.title %>
+          <% end %>
+          </h3>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+        <div class="col-md-5">
+      <h3>コメント数</h3>
+      <% lastcomment = 0 %>
+      <% j = 1 %>
+      <% @comment_ranks.each.with_index(1) do |post, i| %>
+        <% if i == 1 %>
+          <% lastcomment = post.comments.count %>
+        <% end %>
+        <% if post.comments.count != lastcomment %>
+          <% lastcomment = post.comments.count %>
+          <% j = i %>
+          <h5>第<%= j %>位</h5>
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_image(200,200) %>
+          <% end %>
+          <h3>
+          <%= link_to post_path(post.id) do %>
+            <%= post.title %>
+          <% end %>
+          </h3>
+        <% else %>
+          <% lastcomment = post.comments.count %>
+          <h5>第<%= j %>位</h5>
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_image(200,200) %>
+          <% end %>
+          <h3>
+          <%= link_to post_path(post.id) do %>
+            <%= post.title %>
+          <% end %>
+          </h3>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
 
-
+  </div>
+</div>
+<!--同数の場合投稿順に順位を表示している↓-->
+<!--<h4>お気に入り数</h4>-->
+<%# @favorite_ranks.each.with_index(1) do |post, i| %>
+  <!--<h6>第<%#= i %>位</h6>-->
+  <%#= link_to post_path(post.id) do %>
+    <%#= image_tag post.get_image(200,200) %>  <%# end %>
+  <!--<h6>-->
+    <%#= link_to post_path(post.id) do %>
+      <%#= post.title %>
+    <%# end %>
+  <!--</h6>-->
+<%# end %>
+<!--<h4>コメント数</h4>-->
+<%# @comment_ranks.each.with_index(1) do |post, i| %>
+<!--<h6>第<%#= i %>位</h6>-->
+  <%#= link_to post_path(post.id) do %>
+    <%#= image_tag post.get_image(200,200) %>  <%# end %>
+  <!--<h6>-->
+    <%#= link_to post_path(post.id) do %>
+      <%#= post.title %>
+    <%# end %>
+  <!--</h6>-->
+<%# end %>
 <!--<h1>User::Rankings#index</h1>-->
 <!--<p>Find me in app/views/user/rankings/index.html.erb</p>-->
