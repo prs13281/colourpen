@@ -7,7 +7,7 @@ class User::CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     # コメント投稿者(user)のidを代入
     @comment.user_id = current_user.id
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :asc)
     if @comment.save
       flash.now[:notice] = "コメントの投稿に成功しました。"
     else
@@ -19,7 +19,7 @@ class User::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     #@comment.post_idから親のpost情報を取得し@comments = @post.comments
     @post = Post.find(params[:post_id])
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :asc)
     @comment.destroy
     flash.now[:notice] = "コメントを削除しました。"
   end
