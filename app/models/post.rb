@@ -46,9 +46,8 @@ class Post < ApplicationRecord
   end
 
   def self.search(keyword)
-    # titleとtagで検索(カラム名を記入)
+    # titleとtagで検索。joinsでタグテーブルを紐づける。
     joins(:tags).where(["title like ? OR tag_list like ? OR tags.name like ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
-
 
 end

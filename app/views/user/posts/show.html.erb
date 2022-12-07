@@ -8,7 +8,7 @@
       <% end %>
       <%= image_tag @post.get_image(200,200) %></br>
       <!--タグの表示-->
-      <%= @post.tags.pluck(:name) %>
+        <%= @post.tags.pluck(:name) %>
       <!--お気に入りに追加するボタン表示-->
   <div id="favorite_<%= @post.id %>">
     <% if favorite = @post.favorites.find_by(user_id: current_user.id) %>
