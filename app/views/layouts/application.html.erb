@@ -14,10 +14,10 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-white bg-white">
       <div class="container">
-        <li><%= link_to "ColourPen", root_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
-        <%#= link_to root_path do %>
-        <!--<div class="colourpenimege"></div>-->
-        <%# end %>
+        <!--ロゴ、画像表示-->
+        <%= link_to root_path do %>
+          <div class="colourpen_image"></div>
+        <% end %>
            <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <p class="aisatu">新たな幸せの発見を</p>
