@@ -14,8 +14,8 @@
  *= require_self
  */
 .colourpen_image {
-    background-image: image-url("colourpen_image.jpg");
-    width: 120px;
-    height: 60px;
-    background-size: cover;
+        background-image: image-url("colourpen_image.jpg");
+        width: 120px;
+        height: 60px;
+        background-size: cover;
 }
