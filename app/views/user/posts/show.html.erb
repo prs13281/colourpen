@@ -43,36 +43,23 @@
         </style>
         <script>
         let map
-        function initMap(){
+    function initMap(){
           geocoder = new google.maps.Geocoder()
 
           map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 40.7828, lng:-73.9653},
+            center: {lat: Number(gon.lat), lng: Number(gon.lng) },
             zoom: 12,
           });
 
           marker = new google.maps.Marker({
-            position:  {lat: 40.7828, lng:-73.9653},
+            position: {lat: Number(gon.lat), lng: Number(gon.lng) },
             map: map
           });
         }
         let geocoder
-        function codeAddress(){
-          let inputAddress = document.getElementById('address').value;
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status == 'OK') {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-              });
-            } else {
-              alert('該当する結果がありませんでした：' + status);
-            }
-          });
-        }
+       
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=SECRET_KEY" async defer></script>
+        <script src="https://maps.google.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap&language=ja"></script>
       </div>
   </div>
   <div class="row">

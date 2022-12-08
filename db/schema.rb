@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2022_12_01_124352) do
     t.string "place"
     t.string "tag_list"
     t.text "introduction", null: false
+    t.decimal "latitude", precision: 9, scale: 6
+    t.decimal "longitude", precision: 9, scale: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

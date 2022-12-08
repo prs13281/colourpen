@@ -3,6 +3,8 @@
   <div class="row">
     <div class="col-md-5">
     <%= form_with model: @post, url:posts_path do |f| %>
+      <%= f.hidden_field :latitude, value: nil %>
+       <%= f.hidden_field :longitude, value: nil %>
       <div class="form_field">
         <%= f.label :写真 %>
         <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
@@ -25,7 +27,7 @@
         <%= f.text_area :introduction, id:"introduction", class:'form-control' %>
       </div>
       <div class="form_field">
-        <input id="address" type="textbox" value="GeekSalon">
+        <input id="address" type="textbox" value="">
         <input type="button" value="Encode" onclick="codeAddress()">
         <div id='map'></div>
         <style>
@@ -53,7 +55,12 @@
         function codeAddress(){
           let inputAddress = document.getElementById('address').value;
           geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            
             if (status == 'OK') {
+              
+              
+              $("#post_latitude").val(results[0].geometry.location.lat());
+              $("#post_longitude").val(results[0].geometry.location.lng());
               map.setCenter(results[0].geometry.location);
               var marker = new google.maps.Marker({
                   map: map,
@@ -65,7 +72,7 @@
           });
         }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=SECRET_KEY" async defer></script>
+        <script src="https://maps.google.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap&language=ja"></script>
         <%#= f.label :場所 %>
         <%#= f.text_field :place, id:"place", class:'form-control' %>
       </div>

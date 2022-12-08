@@ -1,5 +1,5 @@
 <div class="container">
-  <script src="http://maps.google.com/maps/api/js?key=SECRET_KEY&language=ja"></script>
+  <!--<script src="https://maps.google.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap&language=ja"></script>-->
   <div class="row">
       <%= link_to "削除", admin_user_post_path(@user, @post), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-danger' %>
   </div>
@@ -34,12 +34,12 @@
           geocoder = new google.maps.Geocoder()
 
           map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 40.7828, lng:-73.9653},
+            center: {lat: 35.6895014, lng:139.6917337},
             zoom: 12,
           });
 
           marker = new google.maps.Marker({
-            position:  {lat: 40.7828, lng:-73.9653},
+            position:   {lat: 35.6895014, lng:139.6917337},
             map: map
           });
         }
@@ -59,6 +59,6 @@
           });
         }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=SECRET_KEY&callback=initMap" async defer></script>
+        <script src="https://maps.google.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap&language=ja"></script>
       </div>
 </div>

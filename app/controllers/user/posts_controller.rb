@@ -49,12 +49,16 @@ class User::PostsController < ApplicationController
   def show
     # 投稿に対して、いいねを紐付ける
     @post = Post.includes(:favorites).find(params[:id])
+
     #投稿した人の名前表示
     @user = @post.user
     # コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
     @comments = @post.comments.order(created_at: :desc)
     # コメントの作成
     @comment = Comment.new
+
+     gon.lng = @post.longitude
+     gon.lat = @post.latitude
   end
 
   def edit
@@ -106,7 +110,10 @@ class User::PostsController < ApplicationController
       :place,
       :tag_list,
       :image,
-      :introduction)
+      :introduction,
+      :latitude,
+      :longitude
+      )
   end
 
   def tag_params
