@@ -8,8 +8,9 @@
       <%= link_to user_path(@user.id), class: 'btn btn-outline-dark btn-block' do %>
         <%= @user.name %></br>
       <% end %>
-      <%= image_tag @post.get_image(300,300) %></br>
+      <%= image_tag @post.get_image(400,500) %></br>
       <!--タグの表示-->
+      <h5>タグ</h5>
       <%= @post.tags.pluck(:name) %>
       <div style="width: 30%;", class="ml-2" id="comment_list">
         <!--コメントとコメントした人表示-->
@@ -23,7 +24,7 @@
         <style>
         #map {
           height: 230px;
-          width: 350px;
+          width: 280px;
         }
         </style>
         <script>

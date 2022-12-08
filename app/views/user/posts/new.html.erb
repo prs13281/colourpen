@@ -32,8 +32,8 @@
         <div id='map'></div>
         <style>
         #map {
-          height: 280px;
-          width: 370px;
+          height: 240px;
+          width: 290px;
         }
         </style>
         <script>
@@ -42,12 +42,12 @@
           geocoder = new google.maps.Geocoder()
 
           map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 40.7828, lng:-73.9653},
-            zoom: 12,
+            center: {lat: 35.6809591, lng: 139.7673068},
+            zoom: 13,
           });
 
           marker = new google.maps.Marker({
-            position:  {lat: 40.7828, lng:-73.9653},
+            position:  {lat: 35.6809591, lng: 139.7673068},
             map: map
           });
         }
@@ -55,10 +55,10 @@
         function codeAddress(){
           let inputAddress = document.getElementById('address').value;
           geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            
+
             if (status == 'OK') {
-              
-              
+
+
               $("#post_latitude").val(results[0].geometry.location.lat());
               $("#post_longitude").val(results[0].geometry.location.lng());
               map.setCenter(results[0].geometry.location);
