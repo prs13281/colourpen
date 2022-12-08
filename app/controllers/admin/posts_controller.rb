@@ -8,7 +8,10 @@ class Admin::PostsController < ApplicationController
     #投稿した人の名前表示
     @user = @post.user
     # コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :asc)
+    # 緯度経度を保存する
+    gon.lng = @post.longitude
+    gon.lat = @post.latitude
   end
 
   def destroy

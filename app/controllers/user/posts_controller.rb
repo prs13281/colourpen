@@ -56,9 +56,9 @@ class User::PostsController < ApplicationController
     @comments = @post.comments.order(created_at: :desc)
     # コメントの作成
     @comment = Comment.new
-
-     gon.lng = @post.longitude
-     gon.lat = @post.latitude
+    # 緯度経度を保存する
+    gon.lng = @post.longitude
+    gon.lat = @post.latitude
   end
 
   def edit
