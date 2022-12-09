@@ -63,6 +63,8 @@ class User::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    gon.lng = @post.longitude
+    gon.lat = @post.latitude
   end
 
   def update

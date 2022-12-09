@@ -61,3 +61,4 @@ gem 'net-smtp'
 gem 'kaminari'
 gem 'dotenv-rails'
 gem 'gon'
+gem "geocoder"
