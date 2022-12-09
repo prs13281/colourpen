@@ -2,16 +2,17 @@
   <!--会員詳細の下に余白作る-->
   <div style = "padding-bottom:45px;", class = text-center ><h3>会員詳細</h3></div>
   <div class="row">
-   <div class="col-md-4">
+   <div class="offset-1 col-md-4">
      <div class = text-center ><h5>プロフィール画像</h5></div>
-    <div style = "padding-bottom:45px;" ><%= image_tag @user.get_profile_image(300,300) %></div>
+    <div style = "padding-bottom:45px;" ><%= image_tag @user.get_profile_image(350,400) %></div>
     <%= link_to edit_admin_user_path(@user.id),  class: 'btn btn-outline-dark btn-block' do %>
      <!--<i class="fas fa-user-cog"></i>-->
       編集する
     <% end %>
 
   </div>
-  <div class="offset-2 col-md-5">
+  <div class="offset-1 col-md-5">
+  <div style = "padding-top:45px;"></div>
     <table class="table">
       <tbody>
         <tr>
@@ -51,15 +52,16 @@
     </div>
     </div>
   </div>
+  <!--上下左右に少し余白つける-->
   <div class="row">
-    <% @posts.each do |post| %>
-      <div style = "width: 15%;", class="ml-2">
-      <%= link_to admin_post_path(post.id) do %>
-        <%= image_tag post.get_image(120,120), size: "120x120" %></br>
-        <%= post.title %></br>
+      <% @posts.each do |post| %>
+        <div style = "width: 15%;", class="ml-2">
+        <%= link_to admin_post_path(post.id) do %>
+          <%= image_tag post.get_image(120,120), size: "120x120" %></br>
+          <%= post.title %></br>
+        <% end %>
+        </div>
       <% end %>
-      </div>
-    <% end %>
   </div>
 </div>
  <!--<div><input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book"></div>-->
