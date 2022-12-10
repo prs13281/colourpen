@@ -17,5 +17,6 @@ import '@fortawesome/fontawesome-free/js/all'
 
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
+require('./preview') //画像プレビューのため

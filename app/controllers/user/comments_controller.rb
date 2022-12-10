@@ -8,8 +8,6 @@ class User::CommentsController < ApplicationController
     #投稿に紐づいたコメントを作成
     @comment = @post.comments.build(comment_params)
     @comments_latest3 = @post.comments.limit(3).offset(params[:offset])
-    # # 新着コメント3件を除く全コメントを取得 (3件以下の場合は空)
-    # @comments_offset3 = @post_comments.offset(3)
     # コメント投稿者(user)のidを代入
     @comment.user_id = current_user.id
     @comments = @post.comments.order(created_at: :asc)

@@ -1,6 +1,12 @@
 //新規投稿画像表示
-//if (document.URL.match(/new/)){
-//  document.addEventListener('DOMContentLoaded', () => {
+if (document.URL.match(/new/)){
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('postimage').addEventListener('change', (e) =>{
+      console.log(e);
+    });
+  });
+
+}
 //    const createImageHTML = (blob) => {
 //      const imageElement = document.getElementById('new-image');
 //      const blobImage = document.createElement('img');

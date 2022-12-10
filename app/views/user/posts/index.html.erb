@@ -10,6 +10,10 @@
           <% if request.path == "/search" %>
             <%= link_to "戻る", posts_path, class: "btn btn-outline-secondary" %>
           <% end %>
+          <% if request.path == "/search_tag" %>
+            <!--referer前のページに戻る-->
+            <%= link_to "戻る", request.referer, class: "btn btn-outline-secondary" %>
+          <% end %>
         <% end %>
       </div>
       <div class = "d-flex flex-wrap">

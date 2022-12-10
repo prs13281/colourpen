@@ -14,6 +14,7 @@
           <% end %>
         <% end %>
       <!--検索後の表示されてるページにのみ表示-->
+      <%= request.path %>
       <% if request.path == "/search_tag" %>
         <%= link_to "戻る", posts_path, class: "btn btn-outline-secondary" %>
       <% end %>
@@ -64,7 +65,7 @@
           map = new google.maps.Map(document.getElementById('map'), {
             // 緯度経度をgon(というgem)でjavascriptとrailsを連携させて、データを受け取り表示
             center: {lat: Number(gon.lat), lng: Number(gon.lng) },
-            zoom: 11,
+            zoom: 12,
           });
 
           // mapの赤いピンの表示
