@@ -2,7 +2,7 @@
   <div class="text-center"><h2>新規投稿</2></div>
   <div class="row">
     <div class="col-md-7">
-    <%= form_with model: @post, url:posts_path do |f| %>
+    <%= form_with model: @post, url:posts_path,  local: true do |f| %>
       <%= f.hidden_field :latitude, value: nil %>
        <%= f.hidden_field :longitude, value: nil %>
       <div class="form_field">
@@ -10,8 +10,8 @@
         <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
       </div>
       <!--画像表示の追記-->
-      <div id = "new-image" ></div> 
-      
+      <div id = "new-image" ></div>
+
       <div class="form_field">
         <%= f.label :タイトル %>
         <%= f.text_field :title, autofocus: true, id:"title", class:'form-control' %>
