@@ -10,6 +10,10 @@ if (document.URL.match(/new/)){
     };
 
     document.getElementById('post_image').addEventListener('change', (e) =>{
+      const imageContent = document.querySelector('img');
+      if (imageContent){
+        imageContent.remove();
+      }
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
       createImageHTML(blob);
