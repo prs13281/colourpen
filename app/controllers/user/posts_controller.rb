@@ -19,6 +19,13 @@ class User::PostsController < ApplicationController
     render 'index'
   end
 
+  def search_tag
+    @posts = Post.search_tag(params[:keyword])
+    @keyword = params[:keyword]
+    render 'index'
+  end
+
+
   def create
     @post = current_user.posts.build(post_params)
     # タグを,で区切って複数保存
@@ -53,7 +60,8 @@ class User::PostsController < ApplicationController
     #投稿した人の名前表示
     @user = @post.user
     # コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :desc).first(3)
+    @comments_next = @post.comments.order(created_at: :desc).offset(3)
     # コメントの作成
     @comment = Comment.new
     # 緯度経度を保存する

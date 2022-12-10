@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     end
     # 検索フォーム作成
     get 'search' => 'posts#search'
+    get 'search_tag' => 'posts#search_tag'
   end
 
   # devise_for :admins

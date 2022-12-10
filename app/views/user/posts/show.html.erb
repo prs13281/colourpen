@@ -6,8 +6,18 @@
         <%= @user.name %></br>
       <% end %>
       <%= image_tag @post.get_image(400,500) %></br>
+
       <!--タグの表示-->
-        <%= @post.tags.pluck(:name) %>
+        <% @post.tags.each do |tag| %>
+          <%= link_to search_tag_path(keyword: tag.name) do %>
+            <%= tag.name %>
+          <% end %>
+        <% end %>
+      <!--検索後の表示されてるページにのみ表示-->
+      <% if request.path == "/search_tag" %>
+        <%= link_to "戻る", posts_path, class: "btn btn-outline-secondary" %>
+      <% end %>
+
       <!--お気に入りに追加するボタン表示-->
   <div id="favorite_<%= @post.id %>">
     <% if favorite = @post.favorites.find_by(user_id: current_user.id) %>
@@ -19,7 +29,13 @@
   </div>
       <div style="width: 70%;", class="ml-1" id="comment_list">
       <!--コメントとコメントした人表示-->
-        <%= render "user/comments/comment_list", comments: @comments %>
+        <%= render "user/comments/comment_list", comments: @comments, post: @post %>
+        <% if @comments_next.any? %>
+          <details>
+            <summary>全てのコメントを表示</summary>
+            <%= render "user/comments/comment_list", comments: @comments_next, post: @post %>
+          </details>
+        <% end %>
       </div>
       <div style = "width: 30%;", class="ml-2">
       <%= form_with model: [@post,@comment], url:post_comments_path(@post), local: false do |f| %>
@@ -41,7 +57,7 @@
         </style>
         <script>
         let map
-    function initMap(){
+        function initMap(){
           geocoder = new google.maps.Geocoder()
 
           // map表示
