@@ -26,18 +26,23 @@
         <%= f.label :絶景ポイント %>
         <%= f.text_area :introduction, id:"introduction", class:'form-control' %>
       </div>
-      <div class="form_field">
-        <input id="address" type="textbox" >
-        <input type="button" value="検索" onclick="codeAddress()">
-        <div id='map'></div>
+
+      <div class = "form_field" >
+        <input id = "address" type="textbox" >
+        <input type ="button" value="検索" onclick="codeAddress()" >
+        <div id = 'map' ></div>
         <style>
         #map {
           height: 240px;
           width: 330px;
         }
         </style>
+
         <script>
         let map
+        let geocoder
+        const display = document.getElementById('display')
+
         function initMap(){
           geocoder = new google.maps.Geocoder()
 

@@ -3,6 +3,10 @@
   <div class="row">
     <div class="col-md-5">
     <%= form_with model: @post, url:post_path(@post.id), method: :patch do |f| %>
+      <!--更新内容が新しく保存される-->
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+
       <div class="form_field">
         <%= f.label :写真 %>
         <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
@@ -55,7 +59,11 @@
           let inputAddress = document.getElementById('address').value;
           geocoder.geocode( { 'address': inputAddress}, function(results, status) {
             if (status == 'OK') {
+              // 新しい緯度経度に変更する
+              $("#post_latitude").val(results[0].geometry.location.lat());
+              $("#post_longitude").val(results[0].geometry.location.lng());
               map.setCenter(results[0].geometry.location);
+
               var marker = new google.maps.Marker({
                   map: map,
                   position: results[0].geometry.location
