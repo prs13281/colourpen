@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :posts,only: [:destroy]
     end
     resources :tags,only: [:new,:create, :update, :destroy]
+    get 'search' => 'users#search'
   end
 
   scope module: :user do

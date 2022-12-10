@@ -1,26 +1,34 @@
-<% if @users.exists? %>
-  <% @users.each do |user| %>
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>フォロー数: <%= user.followings.count %></td>
-          <td>フォロワー数: <%= user.followers.count %></td>
-          <td>
-            <%=link_to user_path(user.id) do %>
-              <% user.name %>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="container">
+  <div class = "row">
+    <div class = "offset-md-1 col-md-10">
+      <div class = "col text-center">
+        <h5>フォローリスト</h5>
+      </div>
+    <div class = "offset-md-2 col-md-8">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th></th>
+            <th>アカウント名</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% if @users.exists? %>
+            <% @users.each do |user| %>
+            <tr>
+              <th><%= image_tag user.get_profile_image(35,35) %></th>
+              <th>
+                <%=link_to user_path(user.id) do %>
+                  <% user.name %>
+                <% end %>
+              </th>
+            </tr>
+          <% end %>
+          <% else %>
+            <p>ユーザーはいません</p>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

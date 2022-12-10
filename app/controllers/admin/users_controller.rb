@@ -5,6 +5,12 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
+  def search
+    @users = User.search(params[:keyword])
+    @keyword = params[:keyword]
+    render 'index'
+  end
+
   def show
     @user = User.find(params[:id])
     #ユーザーが投稿したものを表示

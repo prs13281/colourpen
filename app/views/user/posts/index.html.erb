@@ -8,7 +8,7 @@
           <%= f.submit "検索" %>
           <!--検索後の表示されてるページにのみ表示-->
           <% if request.path == "/search" %>
-            <%= link_to "戻る", posts_path, class: "btn btn-outline-dark btn-block btn-sm" %>
+            <%= link_to "戻る", posts_path, class: "btn btn-outline-secondary" %>
           <% end %>
         <% end %>
       </div>

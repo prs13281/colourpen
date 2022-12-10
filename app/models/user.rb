@@ -39,6 +39,11 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def self.search(keyword)
+    # 名前かメールアドレスで検索
+    where(["name like ? OR email like ?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
