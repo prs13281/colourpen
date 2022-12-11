@@ -1,37 +1,43 @@
 <div class = "container">
   <div class = "row">
-    <div class = "offset-md-1 col-md-10">
-      <div class = "col text-center">
-        <h5>会員一覧</h5>
-        <div class = "search-form">
-          <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-            <%= f.text_field :keyword, value: @keyword %>
-            <%= f.submit "検索" %>
+    <div class = "offset-sm-3 col-sm-5">
+      <h4 class = "text-center mt-5 mb-3">会員一覧</h4>
+
+      <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+
+      <div class = "search-form mb-3">
+        <%= f.text_field :keyword, value: @keyword, class: "form-control" %>
+        <%= f.submit "検索", class: "btn btn-secondary" %>
+
             <!--検索後の表示されてるページにのみ表示-->
-            <% if request.path == "/admin/search" %>
-              <%= link_to "戻る", admin_users_path, class: "btn btn-outline-secondary" %>
-            <% end %>
-          <% end %>
-        </div>
+        <% if request.path == "/admin/search" %>
+          <%= link_to "戻る", admin_users_path, class: "btn btn-outline-secondary" %>
+        <% end %>
       </div>
-    <div class = "offset-md-2 col-md-8">
+
+      <% end %>
       <table class="table table-bordered">
         <thead class="thead-light">
+
           <tr>
             <th>会員ID</th>
             <th>名前</th>
             <th>ステータス</th>
             </tr>
+
         </thead>
         <tbody>
+
           <% @users.each do |user| %>
             <tr>
               <th><%= user.id %></th>
+
               <th>
                 <%= link_to admin_user_path(user.id) do %>
                 <%= user.name %>
                 <% end %>
               </th>
+
               <th>
                 <% if user.is_deleted == true %>
                   退会
@@ -39,8 +45,10 @@
                   有効
                 <% end %>
               </th>
+
             </tr>
           <% end %>
+
         </tbody>
       </table>
     </div>
