@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-7">
       <h2><%= @post.title %></h2></br>
-      <%= link_to user_path(@user.id), class: 'btn btn-outline-dark btn-block' do %>
+      <%= link_to request.referer, class: 'btn btn-outline-dark btn-block' do %>
         <%= @user.name %></br>
       <% end %>
       <%= image_tag @post.get_image(400,500) %></br>
