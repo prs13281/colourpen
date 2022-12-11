@@ -13,8 +13,9 @@
             <%= tag.name %>
           <% end %>
         <% end %>
+        <!--検索後に飛ぶパスを見る-->
+        <%#= request.path %>
       <!--検索後の表示されてるページにのみ表示-->
-      <%= request.path %>
       <% if request.path == "/search_tag" %>
         <%= link_to "戻る", posts_path, class: "btn btn-outline-secondary" %>
       <% end %>

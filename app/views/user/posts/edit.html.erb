@@ -16,7 +16,7 @@
 
       <div class="form_field">
         <%= f.label :タイトル %>
-        <%= f.text_field :tatle, autofocus: true, id:"title", class:'form-control' %>
+        <%= f.text_field :tatle, autofocus: true, id:"title", class:'form-control', value: @post.title %>
       </div>
        <%= f.fields_for :tags do |ff| %>
         <div class="form_field">
