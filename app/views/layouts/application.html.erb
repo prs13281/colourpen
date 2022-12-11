@@ -16,14 +16,15 @@
       <nav class="navbar navbar-expand-lg navbar-white bg-white">
       <div class="container">
         <!--ロゴ、画像表示-->
-        <%= link_to root_path do %>
-         colourpen
+        <%= link_to root_path, class: 'navbar-brand' do %>
+          <i class="fas fa-home"></i>
+          <!--<i class="fa-thin fa-house"></i>-->
+          colourpen
           <!--<div class="colourpen_image.JPG"></div>-->
         <% end %>
            <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <p class="aisatu">新たな幸せの発見を</p>
-             <li><%= link_to "検索フォーム作る", new_post_path, class:'btn btn-outline-Dark btn-sm btn-block mb-3' %></li>
              <li><%= link_to "ランキング", rankings_path, class:'btn btn-outline-Warning btn-sm btn-block mb-3' %></li>
              <li><%= link_to "絶景一覧", posts_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
              <li><%= link_to "投稿", new_post_path, class:'btn btn-outline-Danger btn-sm btn-block mb-3' %></li>
