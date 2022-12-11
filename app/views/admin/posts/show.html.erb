@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-      <%= link_to "削除", admin_user_post_path(@user, @post), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-danger' %>
+    <%= link_to "削除", admin_user_post_path(@user, @post), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-danger' %>
+    <%= link_to "戻る", request.referer,class:'btn btn-outline-dark' %>
   </div>
   <div class="row">
     <div class="col-md-7">
