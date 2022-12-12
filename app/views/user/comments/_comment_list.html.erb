@@ -1,18 +1,25 @@
 <!--each文をテンプレート化-->
 <% comments.each do |comment| %>
   <!--コメントしたユーザーのプロフィール画像と名前。ユーザーページに遷移する-->
-  <%= comment.comment %>
-  <%= link_to user_path(comment.user.id) do %>
-    <%= image_tag comment.user.get_profile_image(30,30) %>
-    <%= comment.user.name %>
-    <%#= l comment.created_at %>
-  <% end %>
-  <% if comment.user == current_user %>
-    <%= link_to "削除", post_comment_path(post.id, comment.id), method: :delete, remote: true, class:'btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;' %>
-  <!--adminがサインインしていたら表示-->
-  <% elsif admin_signed_in? %>
-    <%= link_to "削除", admin_comment_path(comment.id), method: :delete, class:'btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;' %>
-  <% end %>
+  <div>
+    <%= comment.comment %>
+
+    <%= link_to user_path(comment.user.id) do %>
+      <%= image_tag comment.user.get_profile_image(30,30) %>
+      <%= comment.user.name %>
+      <%#= l comment.created_at %>
+    <% end %>
+
+    <% if comment.user == current_user %>
+      <%= link_to "削除", post_comment_path(post.id, comment.id), method: :delete, remote: true, class:'btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;' %>
+    <!--adminがサインインしていたら表示-->
+    <% elsif admin_signed_in? %>
+      <%= link_to "削除", admin_comment_path(comment.id), method: :delete, class:'btn btn-sm btn-danger p-0 p-1", style: "font-size: 8px;' %>
+    <% end %>
+
+  </div>
+
+<% end %>
   <%#= simple_format(h(comment.text)) %>
   <!--サインインしているユーザーのみに編集、削除ボタン表示-->
   <%# if user_signed_in? %>
@@ -22,4 +29,3 @@
       <%#= link_to "削除", post_comment_path(@post, c), method: :delete %>
     <%# end %>
   <%# end %>
-<% end %>
