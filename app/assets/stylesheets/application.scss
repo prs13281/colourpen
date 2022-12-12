@@ -13,10 +13,14 @@
  *= require_tree .
  *= require_self
  */
- @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+// body {
+// font-family: 'Klee One', cursive !important;
+// }
 
 body {
- font-family: 'Klee One', cursive !important;
+font-family: 'Shippori Mincho B1', serif !important;
 }
 
 .colourpen_image {
