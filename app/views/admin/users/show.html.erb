@@ -1,34 +1,34 @@
 <div class="container my-5">
   <div class="row">
-    
+
     <div class="col-md-6">
       <%= image_tag @user.get_profile_image(640,720), class: "img-fluid" %>
     </div>
-    
+
     <div class="col-md-6">
       <table class="table">
         <tbody>
-          
+
           <tr>
             <th>会員ID</th>
             <th><%= @user.id %></th>
           </tr>
-          
+
           <tr>
             <th>アカウント名</th>
             <th><%= @user.name %></th>
           </tr>
-          
+
           <tr>
             <th>自己紹介</th>
             <th><%= @user.introduction %></th>
           </tr>
-          
+
           <tr>
             <th>メールアドレス</th>
             <th><%= @user.email %></th>
           </tr>
-          
+
           <tr>
             <th>退会ステータス</th>
             <th>
@@ -39,7 +39,7 @@
               <% end %>
             </th>
           </tr>
-          
+
         </tbody>
       </table>
 

@@ -1,15 +1,11 @@
-<div class="container">
-  <div class = "row">
-    <div class = text-center><h3>マイページ</h3></div>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'btn btn-outline-Secondary btn-md btn-block mb-3' %>
-  </div>
+<div class="container my-5">
   <div class = "row">
     <div class = "col-md-4">
       <!--アカウント登録情報-->
-      <%= image_tag @user.get_profile_image(230,230) %>
-      <div><h4><%= @user.name %></h4></div>
-      <div><h5><%= @user.introduction %></h5></div>
-      <div><h5><%= @user.email %></h5></div>
+      <div class="text-center"><strong><h3><%= @user.name %></h3></strong></div>
+      <div class="text-center mt-1"><%= image_tag @user.get_profile_image(230,230) %></div>
+      <div class="text-center mt-1"><h5><%= @user.introduction %></h5></div>
+      <div class="text-center mt-1"><h5><%= @user.email %></h5></div>
       <!--ログインユーザーのみ編集を表示-->
       <% if user_signed_in? %>
         <%= link_to users_my_page_edit_path(@user.id),  class: 'btn btn-outline-dark btn-block' do %>
@@ -17,22 +13,22 @@
         <% end %>
       <% end %>
       <%= link_to "お気に入り写真", favorites_user_path(@user), class: 'btn btn-outline-dark btn-block' %>
-      <%= link_to "フォローリスト", user_followings_path(@user),  class: 'btn btn-outline-dark btn-block' %>
-      <%= link_to "フォロワー", user_followers_path(@user),  class: 'btn btn-outline-dark btn-block' %>
+      <%= link_to "フォローリスト", user_followings_path(@user), class: 'btn btn-outline-dark btn-block' %>
+      <%= link_to "フォロワー", user_followers_path(@user), class: 'btn btn-outline-dark btn-block' %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark btn-block' %>
     </div>
     <!--ログインユーザーの投稿写真-->
-    <div class = "offset-1 col-md-5">
-      <div class = "d-flex flex-wrap">
+    <div class = "offset-1 col-md-7">
+      <!--<div class = "d-flex flex-wrap">-->
         <!--投稿写真並べて表示-->
         <% @posts.each do |post| %>
-        <div style = "width: 20%;", class="ml-2">
           <%= link_to post_path(post.id) do %>
-          <%= image_tag post.get_image(90,90), size: "90x90" %></br>
-          <%= post.title %></br>
+            <%= image_tag post.get_image(500,500), class: 'user-my_page-image' %></br>
+            <%= post.title %></br>
           <% end %>
-        </div>
         <% end %>
-      </div>
+      <!--</div>-->
+    </div>
   </div>
 </div>
 
