@@ -1,11 +1,11 @@
-.cover {
+.cover-about {
   height: 100%;
   width: 100%;
   display: table;
   background-image: url(/assets/about.jpg);
   background-color:rgba(255,255,255,0.6);
   background-blend-mode:lighten;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 
 .text-center{

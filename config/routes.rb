@@ -15,10 +15,12 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :posts,only: [:show]
     resources :comments,only: [:index, :show, :edit, :update, :destroy]
+
     resources :users,only: [:index, :show, :edit, :update] do
       # adminから投稿削除した時にuser_idを辿ってredirectするためネストする
       resources :posts,only: [:destroy]
     end
+
     resources :tags,only: [:new,:create, :update, :destroy]
     get 'search' => 'users#search'
   end
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
     patch 'users/my_page/edit' => 'users#update'
     get 'users/withdraw' => 'users#withdraw'
     patch 'users/unsubscribe' => 'users#unsubscribe'
+    get 'users/thanks' => 'users#thanks'
+
     resources :users do
      # memberでuser_idが含まれるルーティングになる
       member do
@@ -43,10 +47,12 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+
     resources :posts,only: [:new, :index, :create, :show, :edit, :update, :destroy] do
     # どの投稿に紐づいたコメントなのかURLが判別できるようにする
       resources :comments, only: [:create, :destroy]
     end
+
     # 検索フォーム作成
     get 'search' => 'posts#search'
     get 'search_tag' => 'posts#search_tag'
