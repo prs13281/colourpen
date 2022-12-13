@@ -1,27 +1,38 @@
 <div class="container">
   <div class = "row">
-    <div class = text-center><h3>会員情報編集</h3></div>
-  </div>
-  <div class = "row">
-    <div class = "col-md-4 offset-1">
+    <div class = "col-md-5">
+
+      <div class = text-center><h3>会員情報編集</h3></div>
+
       <%= form_with model: @user, url: users_my_page_edit_path(@user.id), method: :patch do |f| %>
-      <div class="field">
+
+      <div class="field mt-4">
         <%= f.label :プロフィール写真 %>
         <%= f.file_field :profile_image, accept: "image/*", class:'form-control-file', id: 'profile_image' %>
       </div>
+
         <!--画像表示の追記-->
       <div id = "user_profile_image" ></div>
       <div id = "new-image" ></div>
+
     </div>
-    <div class = "offset-1 col-md-4 offset-1">
+
+    <div class = "col-md-7 mt-5">
       <%#= form_with model: @user, url: users_my_page_edit_path(@user.id), method: :patch do |f| %>
       <table class="table table-borderless">
         <thead></thead>
         <tbody>
+
+          <tr>
+            <th></th>
+            <th class="text-right"><%= link_to "退会", users_withdraw_path, class:'btn btn-outline-danger' %></th>
+          </tr>
+
           <tr>
             <th><%= f.label :name, "アカウント名" %></th>
             <th><%= f.text_field :name, autofocus: true, id:"name", class:'form-control' %></th>
           </tr>
+
           <tr>
             <th><%= f.label :name, "自己紹介" %></th>
             <th><%= f.text_area :introduction, autofocus: true, id:"introduction", class:'form-control' %></th>
@@ -31,10 +42,17 @@
             <th><%= f.label :email, "メールアドレス" %></th>
             <th><%= f.text_field :email, id:"email", class:'form-control' %></th>
           </tr>
+
         </tbody>
       </table>
-      <%= f.submit "更新", class:'btn btn-outline-secondary' %><%= link_to "退会", users_withdraw_path, class:'btn btn-outline-danger btn-block' %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class = "offset-4 col-4 p-1">
+      <%= f.submit "更新", class:'btn btn-outline-dark btn-block' %>
+    </div>
       <% end %>
+
     </div>
   </div>
 </div>

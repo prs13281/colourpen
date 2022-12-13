@@ -14,13 +14,14 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-white bg-white site_header pb-3 pt-3">
+      <!--<nav class="navbar navbar-expand-lg navbar-white bg-white site-header pb-3 pt-3">-->
+      <nav class= "navbar navbar-expand-lg navbar-dark bg-white site-header pb-3 pt-3">
       <div class="container">
-          <i class="fas fa-pen fa-2x fa-rotate-90"></i>
+        <i class="fas fa-pen fa-2x fa-rotate-90"></i>
         <%= link_to root_path, class: 'navbar-brand' do %>
-          <h1 class="title">colourpen</h1>
+          <h1 class="title">ColourPen</h1>
         <% end %>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown" >
+      <div class="collapse navbar-collapse" id="navbarNavDropdown" >
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <!--<p class="aisatu">新たな幸せの発見を</p>-->
