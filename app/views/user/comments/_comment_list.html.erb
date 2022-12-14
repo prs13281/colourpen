@@ -1,7 +1,7 @@
 <!--each文をテンプレート化-->
 <% comments.each do |comment| %>
   <!--コメントしたユーザーのプロフィール画像と名前。ユーザーページに遷移する-->
-  <div>
+  <div class="mt-3">
     <%= comment.comment %>
 
     <%= link_to user_path(comment.user.id) do %>

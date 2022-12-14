@@ -1,1 +1,1 @@
-$('#favorite_<%= @post.id %>').html('<%= link_to "お気に入り", favorites_path(post_id: @post), remote:true, method: :post, style: "color: black;" %><%= @post.favorites.size %>');
+$('#favorite_<%= @post.id %>').html('<%= link_to "お気に入り", favorites_path(post_id: @post), remote:true, method: :post, class: "btn btn-outline-dark　btn-sm" %><%= @post.favorites.size, class: "ml-2" %>');
