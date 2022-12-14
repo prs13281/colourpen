@@ -1,39 +1,51 @@
 <div class="container">
-  <div class="text-center"><h2>新規投稿</2></div>
   <div class="row">
-    <div class="col-md-7">
+    <div class="offset-md-4 col-md-4">
+      <h3 class="text-center mt-4 mb-3">新規投稿</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5 offset-1">
     <%= form_with model: @post, url:posts_path do |f| %>
       <%= f.hidden_field :latitude, value: nil %>
        <%= f.hidden_field :longitude, value: nil %>
-      <div class="form_field">
+
+      <div class="form_group">
         <%= f.label :写真 %>
         <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
       </div>
-      <div id="new-image"></div>  <!--画像表示の追記-->
-      <div class="form_field">
+
+      <div id="new-image" class: "new-post"></div>
+      <!--画像表示の追記-->
+      <div class="form_group mt-3">
         <%= f.label :タイトル %>
         <%= f.text_field :title, autofocus: true, id:"title", class:'form-control' %>
       </div>
+
        <%= f.fields_for :tags do |ff| %>
-        <div class="form_field">
+        <div class="form_group mt-3">
           <%= ff.label :"タグ（,で区切って複数タグ付け）" %>
           <%= ff.text_field :names, autofocus: true, class:'form-control' %>
         </div>
        <% end %>
+
     </div>
-    <div class="col-md-4">
-      <div class="form_field">
+    <div class="col-md-5 offset-1">
+
+      <div class="form_group">
         <%= f.label :絶景ポイント %>
-        <%= f.text_area :introduction, id:"introduction", class:'form-control' %>
+        <%= f.text_area :introduction, :placeholder => "写真の魅力をたくさん書いてください", id:"introduction", class:'form-control', size: "50x6" %>
       </div>
-      <div class="form_field">
+
+      <div class="form_group mt-5">
         <input id="address" type="textbox" >
         <input type="button" value="検索" onclick="codeAddress()">
         <div id='map'></div>
         <style>
         #map {
           height: 240px;
-          width: 330px;
+          width: 373px;
         }
         </style>
         <script>
@@ -76,7 +88,7 @@
         <%#= f.label :場所 %>
         <%#= f.text_field :place, id:"place", class:'form-control' %>
       </div>
-        <%= f.submit "投稿", class:'btn btn-outline-primary' %>
+        <%= f.submit "投稿", class:'btn btn-outline-primary mt-4 mb-2 text-center' %>
       <% end %>
     </div>
   </div>
