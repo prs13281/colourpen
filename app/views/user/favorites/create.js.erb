@@ -1,1 +1,1 @@
-$('#favorite_<%= @post.id %>').html('<%= link_to "お気に入り済", favorite_path(@favorite.id), method: :delete, remote:true, class: "btn btn-outline-danger　btn-sm" %><%= @post.favorites.size, class: "ml-2" %>');
+$('#favorite_<%= @post.id %>').html("<%= j(render "favorite") %>");

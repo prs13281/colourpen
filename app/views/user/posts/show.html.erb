@@ -26,12 +26,8 @@
 
       <!--お気に入りに追加するボタン表示-->
       <div class="text-right", id="favorite_<%= @post.id %>">
-        <% if favorite = @post.favorites.find_by(user_id: current_user.id) %>
-          <%= link_to "お気に入り済", favorite_path(favorite.id), remote:true, method: :delete, class: "btn btn-outline-danger btn-sm" %>
-        <% else %>
-          <%= link_to "お気に入り", favorites_path(post_id: @post), remote:true, method: :post, class: "btn btn-outline-dark btn-sm" %>
-        <% end %>
-        <%= @post.favorites.size %>
+        <%= render "user/favorites/favorite" %>
+        
       </div>
 
     </div>

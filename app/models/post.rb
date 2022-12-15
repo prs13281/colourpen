@@ -21,6 +21,13 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
+  
+  def favorites_count(current_user)
+    if user == current_user
+      " #{favorites.count}"
+    end
+  end
 
   # def get_post_image(post.id)
   #   if image.attached?
