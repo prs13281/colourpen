@@ -1,5 +1,5 @@
 <% if favorite =  @post.favorites.find_by(user_id: current_user.id) %>
-    <%= link_to "お気に入り済#{@post.favorites_count(current_user)}", favorite_path(favorite.id), remote:true, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+    <%= link_to "お気に入り#{@post.favorites_count(current_user)}", favorite_path(favorite.id), remote:true, method: :delete, class: "btn btn-info btn-sm　mr-5" %>
 <% else %>
     <%= link_to "お気に入り#{@post.favorites_count(current_user)}", favorites_path(post_id: @post), remote:true, method: :post, class: "btn btn-outline-dark btn-sm" %>
 <% end %>

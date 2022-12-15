@@ -21,8 +21,8 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
-  
+
+  # 自分の投稿写真にのみ、お気に入りの数を表示する
   def favorites_count(current_user)
     if user == current_user
       " #{favorites.count}"
