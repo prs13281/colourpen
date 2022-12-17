@@ -1,21 +1,21 @@
 <div class="container">
   <div class = "row">
     <div class = "offset-4 col-md-4">
-      <h3 class = "text-center mt-3 mb-3">絶景一覧</h3>
+      <h3 class = "text-center mt-3 mb-4">絶景一覧</h3>
 
-      <div class="search-form">
+      <div class="text-center">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword, value: @keyword %>
-          <%= f.submit "検索" %>
+          <%= f.text_field :keyword, value: @keyword, class: "form-control mt-3" %>
+          <%= f.submit "検索",class: "btn btn-outline-dark mt-3 mx-1 w-25" %>
 
           <!--検索後の表示されてるページにのみ表示-->
           <% if request.path == "/search" %>
-            <%= link_to "戻る", posts_path, class: "btn btn-outline-secondary mt-3" %>
+            <%= link_to "戻る", posts_path, class: "btn btn-outline-secondary mt-3 mx-1 w-25" %>
           <% end %>
 
           <% if request.path == "/search_tag" %>
             <!--referer前のページに戻る-->
-            <%= link_to "戻る", request.referer, class: "btn btn-outline-secondary" %>
+            <%= link_to "戻る", request.referer, class: "btn btn-outline-secondary mt-3 mx-1 w-25" %>
           <% end %>
 
         <% end %>
