@@ -94,14 +94,11 @@
       <div style="width: 70%;", class="ml-1" id="comment_list">
       <!--コメントとコメントした人表示-->
         <%= render "user/comments/comment_list", comments: @comments, post: @post %>
-        <% if @comments_next.any? %>
-          <details>
-            <summary>全てのコメントを表示</summary>
-            <%= render "user/comments/comment_list", comments: @comments_next, post: @post %>
-          </details>
-        <% end %>
       </div>
-
+      
+      <div style="width: 70%;", class="ml-1" id="comment_list2">
+        <%= render "user/comments/comment_list2", comments: @comments_next, post: @post %>
+      </div>  
     </div>
   </div>
 </div>

@@ -10,7 +10,8 @@ class User::CommentsController < ApplicationController
     @comments_latest3 = @post.comments.limit(3).offset(params[:offset])
     # コメント投稿者(user)のidを代入
     @comment.user_id = current_user.id
-    @comments = @post.comments.order(created_at: :asc)
+    @comments = @post.comments.order(created_at: :desc)
+    @comments_next = @post.comments.order(created_at: :desc).offset(3)
     if @comment.save
       flash.now[:notice] = "コメントの投稿に成功しました。"
     else
@@ -20,10 +21,13 @@ class User::CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    #@comment.post_idから親のpost情報を取得し@comments = @post.comments
-    @post = Post.find(params[:post_id])
-    @comments = @post.comments.order(created_at: :asc)
     @comment.destroy
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments.order(created_at: :desc)
+    @comments_next = @comments.offset(3)
+    
+    #byebug
+    #@comment.post_idから親のpost情報を取得し@comments = @post.comments
     flash.now[:notice] = "コメントを削除しました。"
   end
 

@@ -14,6 +14,8 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 //import './preview'  // 新規投稿に画像表示の追記
 
+import "../stylesheets/application"
+
 
 
 Rails.start()

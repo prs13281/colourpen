@@ -1,3 +1,4 @@
-$("#comment_list").html("<%= j(render "user/comments/comment_list", comments: @comments, post: @post) %>");
+$("#comment_list").html("<%= j(render "user/comments/comment_list", comments: @comments.limit(3), post: @post) %>");
+$("#comment_list2").html("<%= j(render "user/comments/comment_list2", comments: @comments.offset(3), post: @post) %>");
 <!--コメント投稿後フォームを空にする-->
 $('#comment_comment').val('');

@@ -1,2 +1,53 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+// body {
+// font-family: 'Klee One', cursive !important;
+// }
+
+body {
+    font-family: 'Shippori Mincho B1', serif !important;
+}
+
+// .colourpen_image {
+//     background-image: image-url("colourpen_image.JPG");
+//     width: 120px;
+//     height: 60px;
+//     background-size: cover;
+// }
+
+.new-img{
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.site_header{
+    border-bottom: 2px solid #ddd!important;
+}
+
+.title{
+    color:black;
+    font-size: 2.5rem;
+}
+
+.admin-show-image,
+.user-my_page-image,
+.user-index-image {
+    width: 100%;
+    height: 125px;
+    object-fit: cover;
+}
+
+.user-show-image{
+    max-width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+.top-carousel {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
