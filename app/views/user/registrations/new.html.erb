@@ -1,79 +1,74 @@
 <%= form_with model:@user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
 <div class="container">
   <div class = "row">
-    <div class = "col-md-8">
-      
-      <h2 class="text-center mt-5">新規会員登録</h2>
+    <div class = "offset-3 col-md-6">
+
+      <h2 class="text-center mt-5 mb-3">新規会員登録</h2>
         <%= render "devise/shared/error_messages", resource: resource %>
-      
+
         <!--レイアウト整えていく-->
         <table class="table table-borderless">
           <thead></thead>
           <tbody>
+
             <tr>
               <th><%= f.label :アカウント名 %><br />
               <th><%= f.text_field :name, autofocus: true, autocomplete: "名前", class: "form-control" %></th>
             </tr>
-            <tr></tr>
+
+            <tr>
             <tr>
               <th><%= f.label :メールアドレス %></th>
-              <th><%= f.email_field :email, autofocus: true, autocomplete: "email" %></th>
-              <th></thr>
-              <th><%= f.label :"パスワード(6文字以上)" %></th>
-              <th>
-                <%= f.password_field :password, autocomplete: "new-password" %>
-              </th>
-              <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-</th>
+              <th><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></th>
             </tr>
+
+            <tr>
+              <th><%= f.label :"パスワード(6文字以上)" %></th>
+              <th><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %></th>
+            </tr>
+
             <tr>
               <th><%= f.label :"パスワード(確認用)" %></th>
-              <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
-              <th></th>
+              <th><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %></th>
             </tr>
-            <tr>
-              <th></th>
-              <th></th>
-            </tr>
+
           </tbody>
         </table>
-        <%= f.submit "Sign up", class: "btn btn-sm btn-success" %>
-        <% end %>
-        <h5>既に登録済みの方</h5>
-        <%= render "public/shared/links" %>
+        <div class="text-center mt-3">
+          <%= f.submit "新規登録", class: "btn btn-outline-dark w-50" %>
+          <% end %>
+          <h6 class="text-center mt-4">既に登録済みの方</h6>
+          <%= render "user/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
-        
-        
-        
-        
-        
-        <div class="field">
-          <%= f.label :アカウント名 %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
 
-        <div class="field">
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+<!--    <div class="field">-->
+      <%#= f.label :アカウント名 %><br />
+      <%#= f.text_field :name, autofocus: true, autocomplete: "name" %>
+<!--    </div>-->
 
-        <div class="field">
-          <%= f.label :"パスワード（６桁以上）"%>
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
+<!--    <div class="field">-->
+      <%#= f.label :メールアドレス %>
+      <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--    </div>-->
 
-        <div class="field">
-          <%= f.label :"パスワード（確認）" %><br />
-　        </div>
+<!--    <div class="field">-->
+      <%#= f.label :"パスワード（６桁以上）"%>
+      <%#= f.password_field :password, autocomplete: "new-password" %>
+<!--    </div>-->
 
-        <div class="actions">
-          <%= f.submit "新規会員登録" %>
-        </div>
-<% end %>
+<!--    <div class="field">-->
+      <%#= f.label :"パスワード（確認）" %><br />
+<!--  　        </div>-->
 
-<%= render "user/shared/links" %>
-      </div>
-    </div>
-</div>
+<!--    <div class="actions">-->
+      <%#= f.submit "新規会員登録" %>
+<!--    </div>-->
+<!--<%# end %>-->
+
+<!--<%#= render "user/shared/links" %>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--</div>-->
