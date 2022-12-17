@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-5 offset-1">
+    <div class="offset-1 col-md-5 my-3">
     <%= form_with model: @post, url:posts_path do |f| %>
       <%= f.hidden_field :latitude, value: nil %>
        <%= f.hidden_field :longitude, value: nil %>
@@ -30,17 +30,17 @@
         </div>
        <% end %>
 
-    </div>
-    <div class="col-md-5 offset-1">
-
       <div class="form_group">
         <%= f.label :絶景ポイント %>
         <%= f.text_area :introduction, :placeholder => "写真の魅力をたくさん書いてください", id:"introduction", class:'form-control', size: "50x6" %>
       </div>
 
-      <div class="form_group mt-5">
+    </div>
+    <div class="col-md-5">
+
+      <div class="form_group my-2">
         <input id="address" type="textbox" >
-        <input type="button" value="検索" onclick="codeAddress()">
+        <input type="button" value="検索" onclick="codeAddress()" class="mb-3">
         <div id='map'></div>
         <style>
         #map {
@@ -88,8 +88,10 @@
         <%#= f.label :場所 %>
         <%#= f.text_field :place, id:"place", class:'form-control' %>
       </div>
-        <%= f.submit "投稿", class:'btn btn-outline-primary mt-4 mb-2 text-center' %>
+      <div class="text-center">
+        <%= f.submit "投稿", class:"btn btn-outline-primary mt-4 mb-2 w-50" %>
       <% end %>
+      </div>
     </div>
   </div>
 </div>

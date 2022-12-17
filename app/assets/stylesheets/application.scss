@@ -23,15 +23,16 @@ body {
     font-family: 'Shippori Mincho B1', serif !important;
 }
 
-.colourpen_image {
-    background-image: image-url("colourpen_image.JPG");
-    width: 120px;
-    height: 60px;
-    background-size: cover;
-}
+// .colourpen_image {
+//     background-image: image-url("colourpen_image.JPG");
+//     width: 120px;
+//     height: 60px;
+//     background-size: cover;
+// }
 
 .new-img{
-    width: 400px;
+    max-width: 100%;
+    max-height: 300px;
     object-fit: cover;
 }
 

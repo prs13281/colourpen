@@ -1,43 +1,51 @@
 <div class="container">
-  <div class="text-center"><h2>投稿編集</2></div>
   <div class="row">
-    <div class="col-md-5">
+    <div class="offset-md-4 col-md-4">
+      <h3 class="text-center mt-4 mb-3">投稿編集</h3>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="offset-1 col-md-5 my-3">
     <%= form_with model: @post, url:post_path(@post.id), method: :patch,  local: true do |f| %>
       <!--更新内容が新しく保存される-->
       <%= f.hidden_field :latitude %>
       <%= f.hidden_field :longitude %>
 
-      <div class="form_field">
+      <div class="form_group">
         <%= f.label :写真 %>
-        <%= f.file_field :image, accept: "image/*", class:'form-control-file' %>
+        <%= f.file_field :image, accept: "image/*", class:'img-fluid form-control-file' %>
       </div>
       <!--写真のブレビュー-->
       <div id = "new-image" ></div>
 
-      <div class="form_field">
+      <div class="form_group mt-3">
         <%= f.label :タイトル %>
         <%= f.text_field :tatle, autofocus: true, id:"title", class:'form-control', value: @post.title %>
       </div>
        <%= f.fields_for :tags do |ff| %>
-        <div class="form_field">
+        <div class="form_group mt-3">
           <%= ff.label :"タグ（,で区切って複数タグ付け）" %>
           <%= ff.text_field :names, autofocus: true, class:'form-control', value: @post.tags.pluck(:name).join(", b") %>
         </div>
        <% end %>
-    </div>
-    <div class="offset-1 col-md-5">
-      <div class="form_field">
+
+      <div class="form_group">
         <%= f.label :絶景ポイント %>
-        <%= f.text_area :introduction, id:"introduction", class:'form-control' %>
+        <%= f.text_area :introduction, id:"introduction", class:'form-control', size: "50x6", value: @post.introduction %>
       </div>
-      <div class="form_field">
+
+    </div>
+
+    <div class="col-md-5">
+      <div class="form_group my-2">
         <input id="address" type="textbox" >
-        <input type="button" value="検索" onclick="codeAddress()">
+        <input type="button" value="検索" onclick="codeAddress()" class="mb-3">
         <div id='map'></div>
         <style>
         #map {
           height: 240px;
-          width: 330px;
+          width: 373px;
         }
         </style>
         <script>
@@ -47,7 +55,7 @@
 
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: Number(gon.lat), lng: Number(gon.lng) },
-            zoom: 11,
+            zoom: 14,
           });
 
           marker = new google.maps.Marker({
@@ -80,8 +88,10 @@
         <%#= f.label :場所 %>
         <%#= f.text_field :place, id:"place", class:'form-control' %>
       </div>
-        <%= f.submit "更新", class:'btn btn-outline-primary' %><%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-danger' %>
+      <div class="text-center">
+        <%= f.submit "更新", class:'btn btn-outline-dark mx-3 mt-4 w-25' %><%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-outline-danger mx-3 mt-4 w-25' %>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
