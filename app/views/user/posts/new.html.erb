@@ -36,11 +36,11 @@
       </div>
 
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5 my-2">
 
       <div class="form_group my-2">
-        <input id="address" type="textbox" >
-        <input type="button" value="検索" onclick="codeAddress()" class="mb-3">
+        <%= f.text_field :place, {class: "ml-5", id: "place"} %>
+        <input type="button" value="検索" onclick="codeAddress()" class="mb-3 ml">
         <div id='map'></div>
         <style>
         #map {
@@ -65,16 +65,21 @@
         }
         let geocoder
         function codeAddress(){
-          let inputAddress = document.getElementById('address').value;
+          let inputAddress = document.getElementById('place').value;
           geocoder.geocode( { 'address': inputAddress}, function(results, status) {
 
             if (status == 'OK') {
-
+              // 新しく地図取得する
+               map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
+                zoom: 11,
+            });
 
               $("#post_latitude").val(results[0].geometry.location.lat());
               $("#post_longitude").val(results[0].geometry.location.lng());
               map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
+
+              let marker = new google.maps.Marker({
                   map: map,
                   position: results[0].geometry.location
               });

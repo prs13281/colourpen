@@ -2,7 +2,7 @@
   <div class = "row">
     <div class = "offset-1 col-md-4">
       <!--アカウント登録情報-->
-      <div class="text-center"><strong><h3><%= @user.name %></h3></strong></div>
+      <div class="text-center"><strong><h2 class="mb-4"><%= @user.name %></h2></strong></div>
       <div class="text-center mt-1"><%= image_tag @user.get_profile_image(230,230) %></div>
       <div class="text-center mt-1"><h5><%= @user.introduction %></h5></div>
       <div class="text-center mt-1"><h5><%= @user.email %></h5></div>
@@ -12,7 +12,7 @@
           編集する
         <% end %>
       <% end %>
-      <%= link_to "お気に入り写真", favorites_user_path(@user), class: 'btn btn-outline-dark btn-block' %>
+      <%= link_to "お気に入り写真", favorites_user_path(@user), class: 'btn btn-outline-dark btn-block text-center' %>
       <%= link_to "フォローリスト", user_followings_path(@user), class: 'btn btn-outline-dark btn-block' %>
       <%= link_to "フォロワー", user_followers_path(@user), class: 'btn btn-outline-dark btn-block' %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark btn-block' %>

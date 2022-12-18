@@ -30,20 +30,20 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <!--<p class="aisatu">新たな幸せの発見を</p>-->
-                <li><%= link_to "投稿", new_post_path, class: "btn btn-outline-secondary mx-1" %></li>
-                <li><%= link_to "絶景一覧", posts_path, class: "btn btn-outline-secondary mx-1" %></li>
-                <li><%= link_to "ランキング", rankings_path, class: "btn btn-outline-secondary mx-1" %></li>
-                <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary mx-1" %></li>
+                <li><%= link_to "投稿", new_post_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
+                <li><%= link_to "絶景一覧", posts_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
+                <li><%= link_to "ランキング", rankings_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
+                <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary mx-1 my-1" %></li>
                 <!--マイページはプロフィール画像をリンクにする-->
-                <li><%= link_to "マイページ", users_my_page_path, class: "btn btn-outline-secondary mx-1" %></li>
+                <li><%= link_to "マイページ", users_my_page_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
               <% elsif admin_signed_in? %>
-                <li><%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-secondary mx-1" %></li>
-                <li><%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mx-1" %></li>
+                <li><%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
+                <li><%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mx-1 my-1" %></li>
               <% else %>
-                <li><%= link_to "会員登録", new_user_registration_path, class: "btn btn-outline-secondary mx-1" %></li>
-                <li><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary mx-1" %></li>
-                <li><%= link_to "ゲスト", guest_sign_in_path,  method: :post, class: "btn btn-outline-secondary mx-1" %></li>
-                <li><%= link_to "絶景一覧", posts_path, class: "btn btn-outline-secondary mx-1" %></li>
+                <li><%= link_to "会員登録", new_user_registration_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
+                <li><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
+                <li><%= link_to "ゲスト", guest_sign_in_path,  method: :post, class: "btn btn-outline-secondary mx-1 my-1" %></li>
+                <li><%= link_to "絶景一覧", posts_path, class: "btn btn-outline-secondary mx-1 my-1" %></li>
               <% end %>
             </ul>
           </div>
@@ -52,4 +52,5 @@
     </header>
     <%= yield %>
   </body>
+
 </html>
