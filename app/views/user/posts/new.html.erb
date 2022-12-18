@@ -37,17 +37,18 @@
 
     </div>
     <div class="col-md-5 my-2">
-
       <div class="form_group my-2">
         <%= f.text_field :place, {class: "ml-5", id: "place"} %>
-        <input type="button" value="検索" onclick="codeAddress()" class="mb-3 ml">
+        <input type="button" value="検索" onclick="codeAddress()" class="mb-3">
         <div id='map'></div>
+        
         <style>
         #map {
           height: 240px;
           width: 373px;
         }
         </style>
+        
         <script>
         let map
         function initMap(){
@@ -70,10 +71,10 @@
 
             if (status == 'OK') {
               // 新しく地図取得する
-               map = new google.maps.Map(document.getElementById('map'), {
+              map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
                 zoom: 11,
-            });
+              });
 
               $("#post_latitude").val(results[0].geometry.location.lat());
               $("#post_longitude").val(results[0].geometry.location.lng());
