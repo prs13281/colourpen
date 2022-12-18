@@ -43,8 +43,11 @@
         </tbody>
       </table>
 
-    <%= link_to "編集する", edit_admin_user_path(@user.id),  class: 'btn btn-outline-dark mx-5 mb-3' %>
-    <%= link_to "会員一覧へ戻る", admin_users_path(@user.id),  class: 'btn btn-outline-secondary mx-5 mb-3' %>
+    <div class="text-center">
+      <%= link_to "編集する", edit_admin_user_path(@user.id),  class: 'btn btn-outline-dark mb-3 mx-3' %>
+      <%= link_to "会員一覧へ戻る", admin_users_path(@user.id),  class: 'btn btn-outline-secondary mb-3 mx-3' %>
+    </div>
+
     </div>
   </div>
 
