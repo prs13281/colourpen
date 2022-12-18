@@ -1,46 +1,46 @@
 <div class="container">
   <div class = "row">
-    <div class = "offset-3 col-md-6">
-    <h4 class="text-center mt-5 mb-5"><%= @user.name %>さんの会員情報編集</h4>
+    <div class = "offset-md-4 col-md-4">
+      <h4 class="text-center mt-5 mb-5"><%= @user.name %>さんの会員情報編集</h4>
 
-      <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+        <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
 
-      <table class="table table-borderless">
-        <thead></thead>
-        <tbody>
+        <table class="table table-borderless">
+          <thead></thead>
+          <tbody>
 
-          <tr>
-            <th><%= f.label :id, "会員ID" %></th>
-            <th><%= @user.id %></th>
-          </tr>
+            <tr>
+              <th><%= f.label :id, "会員ID" %></th>
+              <th><%= @user.id %></th>
+            </tr>
 
-          <tr>
-            <th><%= f.label :name, "アカウント名" %></th>
-            <th><%= f.text_field :name, autofocus: true, id:"name", class:'form-control' %></th>
-          </tr>
+            <tr>
+              <th><%= f.label :name, "アカウント名" %></th>
+              <th><%= @user.name %></th>
+            </tr>
 
-          <tr>
-            <th><%= f.label :email, "メールアドレス" %></th>
-            <th><%= f.text_field :email, id:"email", class:'form-control' %></th>
-          </tr>
+            <tr>
+              <th><%= f.label :email, "メールアドレス" %></th>
+              <th><%= @user.email %></th>
+            </tr>
 
-          <tr>
-            <th><%= f.label :public_status, "会員ステータス" %></th>
-            <th>
-              <%= f.radio_button :is_deleted, 0, {checked: true} %> 有効
-              <%= f.radio_button :is_deleted, 1, {} %> 退会
-            </th>
-          </tr>
-
-          <tr>
-            <th></th>
-            <th><%= f.submit "変更を保存", class:'btn btn-outline-dark' %></th>
-          </tr>
+            <tr>
+              <th><%= f.label :public_status, "会員ステータス" %></th>
+              <th>
+                <%= f.radio_button :is_deleted, 0, {checked: true} %> 有効
+                <%= f.radio_button :is_deleted, 1, {} %> 退会
+              </th>
+            </tr>
 
         </tbody>
       </table>
+    </div>
+
+    <div class="offset-md-4 col-md-4 text-center">
+      <%= f.submit "変更を保存", class:'btn btn-outline-dark' %>
       <% end %>
     </div>
+
   </div>
 </div>
 
