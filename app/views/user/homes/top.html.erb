@@ -1,35 +1,47 @@
-      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= image_tag 'top1.jpg', class: 'top-carousel height="400"' %>
-          </div>
-          <div class="carousel-item">
-            <%= image_tag 'top2.jpg', class: 'top-carousel' %>
-          </div>
-          <div class="carousel-item">
-            <%= image_tag 'top3.jpg', class: 'top-carousel' %>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="">
+          <%= image_tag 'top1.jpg', class: 'top-carousel' %>
         </a>
       </div>
+
+      <div class="carousel-item">
+        <a href="">
+          <%= image_tag 'top2.jpg', class: 'top-carousel' %>
+        </a>
+      </div>
+      <div class="carousel-item">
+
+        <a href="">
+          <%= image_tag 'top3.jpg', class: 'top-carousel' %>
+        </a>
+      </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
 <div class="container">
   <div class="row">
-    <div class="offset-md-3 col-md-6 offset-3">
+    <div class="offset-md-4 col-md-4">
 
       <h5 class="text-center mt-5 mb-2">ご利用前にお読みください</h5>
-      <div class="text-center mt-4"><%= link_to "絶景とは", about_path, class: 'btn btn-dark btn-block' %></div>
+      <div class="text-center mt-4 mb-5"><%= link_to "絶景とは", about_path, class: 'btn btn-dark btn-block' %></div>
 
     </div>
   </div>
