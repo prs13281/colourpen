@@ -23,7 +23,7 @@
         <% @posts.each do |post| %>
           <%= link_to post_path(post.id) do %>
             <%= image_tag post.get_image(500,500), class: 'user-my_page-image' %></br>
-            <%= post.title %></br>
+            <%= post.title, class: 'post-title' %></br>
           <% end %>
         <% end %>
       <!--</div>-->
