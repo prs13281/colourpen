@@ -36,7 +36,6 @@ Rails.application.routes.draw do
     patch 'users/my_page/edit' => 'users#update'
     get 'users/withdraw' => 'users#withdraw'
     patch 'users/unsubscribe' => 'users#unsubscribe'
-    get 'users/thanks' => 'users#thanks'
 
     resources :users do
      # memberでuser_idが含まれるルーティングになる
