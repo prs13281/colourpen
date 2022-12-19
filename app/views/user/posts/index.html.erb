@@ -28,7 +28,7 @@
       <div class="col-md-2 mt-3 ml-1">
         <%= link_to post_path(posts.id) do %>
           <%= image_tag posts.get_image(500,500), class: 'user-index-image' %></br>
-          <%= posts.title %></br>
+          <p class="text-center"><%= posts.title %></p></br>
         <% end %>
       </div>
 
