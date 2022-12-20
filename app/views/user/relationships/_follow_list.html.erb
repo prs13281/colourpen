@@ -1,32 +1,36 @@
 <div class="container">
-  <div class = "row">
-    <div class = "offset-md-1 col-md-10">
-      <div class = "col text-center">
-        <h5>フォローリスト</h5>
-      </div>
-    <div class = "offset-md-2 col-md-8">
-      <table class="table table-bordered">
+  <div class="row">
+    <div class="offset-md-3 col-md-5">
+      <h4 class="text-center mt-5 mb-3">フォローリスト</h4>
+
+      <table class="table table-bordered mt-4">
         <thead class="thead-light">
+
           <tr>
             <th></th>
             <th>アカウント名</th>
-            </tr>
+          </tr>
+
         </thead>
         <tbody>
+
           <% if @users.exists? %>
             <% @users.each do |user| %>
+
             <tr>
-              <th><%= image_tag user.get_profile_image(35,35) %></th>
+              <th class="text-center"><%= image_tag user.get_profile_image(35,35) %></th>
               <th>
                 <%=link_to user_path(user.id) do %>
                   <% user.name %>
                 <% end %>
               </th>
             </tr>
+
           <% end %>
           <% else %>
             <p>ユーザーはいません</p>
           <% end %>
+
         </tbody>
       </table>
     </div>
