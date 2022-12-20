@@ -1,5 +1,8 @@
 class User::FavoritesController < ApplicationController
 
+  # ログインユーザーのみお気に入り機能使用可
+  before_action :authenticate_user!
+
   def create
     @post = Post.find(params[:post_id])
     @favorite = current_user.favorites.new(post_id: @post.id)

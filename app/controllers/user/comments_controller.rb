@@ -1,6 +1,7 @@
 class User::CommentsController < ApplicationController
-  # before_action :set_comments, only: [:create]
 
+  # ログインユーザーのみコメント機能使用可
+  before_action :authenticate_user!
 
   def create
     # コメントをする対象の投稿(travel_record)のインスタンスを作成
@@ -25,7 +26,7 @@ class User::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comments = @post.comments.order(created_at: :desc)
     @comments_next = @comments.offset(3)
-    
+
     #byebug
     #@comment.post_idから親のpost情報を取得し@comments = @post.comments
     flash.now[:notice] = "コメントを削除しました。"

@@ -1,6 +1,6 @@
 class User::PostsController < ApplicationController
 
-  before_action :authenticate_user!,only: [:new]
+  before_action :authenticate_user!,only: [:new, :edit]
 
   def new
     # current_userからbuildで書くとuser_id作られる

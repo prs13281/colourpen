@@ -1,5 +1,8 @@
 class User::UsersController < ApplicationController
+
+  # ログインユーザーがshowへ遷移する時はマイページに遷移する
   before_action :redirect_my_page, only: [:show]
+  before_action :authenticate_user!
 
   def my_page
     @user = current_user

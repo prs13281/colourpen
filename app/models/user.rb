@@ -17,8 +17,11 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  # 同じ名前不可（一意性をもたせ、２文字以上20文字以内）、自己紹介文は50文字以内
+  # 同じ名前不可（一意性をもたせ、２文字以上20文字以内）
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
+  # 同じメールアドレス不可、＠の前は４文字以上、後ろは２０文字以内
+  # validates :email, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
+  # 自己紹介文は50文字以内
   validates :introduction, length: { maximum: 50 }
 
   # プロフィール画像表示
