@@ -10,6 +10,11 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   belongs_to :user
 
+  # 写真、タイトル、説明文は空では投稿できないように
+  validates :image, presence: true
+  validates :title, presence: true
+  validates :introduction, presence: true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/noimage.jpg')

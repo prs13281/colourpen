@@ -1,4 +1,7 @@
 class User::PostsController < ApplicationController
+
+  before_action :authenticate_user!,only: [:new]
+
   def new
     # current_userからbuildで書くとuser_id作られる
     @post = current_user.posts.build
@@ -97,10 +100,10 @@ class User::PostsController < ApplicationController
   #ゲストログイン用
   def guest
     user          = User.new(user_params)
-    user.name     = "ゲストユーザー"
+    user.name     = "ゲストユーザー"+SecureRandom.alphanumeric(10)
     user.email    = SecureRandom.alphanumeric(10) + "@email.com"
     user.password = SecureRandom.alphanumeric(10)
-    user.save
+    user.save!
     sign_in user
     redirect_to posts_path
   end

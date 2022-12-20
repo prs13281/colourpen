@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  # 同じ名前不可（一意性をもたせ、２文字以上20文字以内）、自己紹介文は50文字以内
+  validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
+  validates :introduction, length: { maximum: 50 }
+
   # プロフィール画像表示
   def get_profile_image(width, height)
     unless profile_image.attached?
