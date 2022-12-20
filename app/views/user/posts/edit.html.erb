@@ -6,7 +6,7 @@
   </div>
 
   <div class="row mt-3">
-    <div class="offset-1 col-md-5 my-3">
+    <div class="offset-1 col-md-5 my-3 ml-1">
     <%= form_with model: @post, url:post_path(@post.id), method: :patch,  local: true do |f| %>
       <!--更新内容が新しく保存される-->
       <%= f.hidden_field :latitude %>
@@ -97,7 +97,7 @@
         <%#= f.text_field :place, id:"place", class:'form-control' %>
       </div>
       <div class="text-center">
-        <%= f.submit "更新", class:'btn btn-outline-dark mx-3 mt-4 w-25' %><%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-outline-danger mx-3 mt-4 w-25' %>
+        <%= f.submit "更新", class:'btn btn-outline-dark mx-3 mt-4 ' %><%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-outline-danger mx-3 mt-4' %>
       <% end %>
       </div>
     </div>

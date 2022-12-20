@@ -1,7 +1,7 @@
 <div class="container">
-  <div class = "row">
-    <div class = "offset-4 col-md-4">
-      <h3 class = "text-center mt-3 mb-4">絶景一覧</h3>
+  <div class="row">
+    <div class="offset-md-4 col-md-4">
+      <h3 class="text-center mt-3 mb-4">絶景一覧</h3>
 
       <div class="text-center">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -25,7 +25,7 @@
   <div class = "row">
     <% @posts.each do |posts| %>
 
-      <div class="col-md-2 mt-3 ml-1">
+      <div class="col-md-2 mt-3 mr-3 ml-3">
         <%= link_to post_path(posts.id) do %>
           <%= image_tag posts.get_image(500,500), class: 'user-index-image' %></br>
           <p class="text-center"><%= posts.title %></p></br>
