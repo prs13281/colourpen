@@ -19,8 +19,10 @@ class User < ApplicationRecord
 
   # 同じ名前不可（一意性をもたせ、２文字以上20文字以内）
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
-  # 同じメールアドレス不可、＠の前は４文字以上、後ろは２０文字以内
-  # validates :email, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
+  
+  # 同じメールアドレス不可。英数字、アンダースコア(_)、ハイフン(-),ドット(.)使用可能
+  validates :email, presence: true, length: { maximum: 300 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  
   # 自己紹介文は50文字以内
   validates :introduction, length: { maximum: 50 }
 
