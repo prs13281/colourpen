@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="offset-md-3 col-md-5">
-      <h4 class="text-center mt-5 mb-3">フォローリスト</h4>
+      <!--<div>-->
+        <h4 class="text-center mt-5 mb-3">フォローリスト
+          <%= link_to "戻る", request.referer, class: "btn btn-outline-secondary mb-1" %>
+        </h4>
+      <!--</div>-->
 
       <table class="table table-bordered mt-4">
         <thead class="thead-light">
