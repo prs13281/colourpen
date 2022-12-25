@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class = "row">
-    <div class = "offset-md-1 col-md-4">
+    <div class = "offset-md-2 col-md-3">
       <!--アカウント登録情報-->
       <div class="text-center"><strong><h2 class="mb-4"><%= @user.name %></h2></strong></div>
       <div class="text-center mt-1"><%= image_tag @user.get_profile_image(230,230) %></div>
@@ -15,7 +15,7 @@
       <%= link_to "お気に入り写真", favorites_user_path(@user), class: 'btn btn-outline-dark btn-block text-center' %>
       <%= link_to "フォローリスト", user_followings_path(@user), class: 'btn btn-outline-dark btn-block' %>
       <%= link_to "フォロワー", user_followers_path(@user), class: 'btn btn-outline-dark btn-block' %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark btn-block' %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark btn-block mb-3' %>
     </div>
     <!--ログインユーザーの投稿写真-->
     <div class="text-center offset-md-1 col-md-4  mt-2">
