@@ -5,7 +5,7 @@
     <%= comment.comment %>
 
     <%= link_to user_path(comment.user.id) do %>
-      <%= image_tag comment.user.get_profile_image(30,30) %>
+      <%= image_tag comment.user.get_profile_image(22,22) %>
       <%= comment.user.name %>
       <%#= l comment.created_at %>
     <% end %>
