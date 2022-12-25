@@ -23,6 +23,7 @@
         <%= f.label :タイトル %>
         <%= f.text_field :tatle, autofocus: true, id:"title", class:'form-control', value: @post.title %>
       </div>
+
        <%= f.fields_for :tags do |ff| %>
         <div class="form_group mt-3">
           <%= ff.label :"タグ（,で区切って複数タグ付け）" %>
@@ -96,6 +97,7 @@
         <%#= f.label :場所 %>
         <%#= f.text_field :place, id:"place", class:'form-control' %>
       </div>
+
       <div class="text-center">
         <%= f.submit "更新", class:'btn btn-outline-dark mx-3 mt-4 ' %><%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm"=>"本当に消しますか？",class:'btn btn-outline-danger mx-3 mt-4' %>
       <% end %>
