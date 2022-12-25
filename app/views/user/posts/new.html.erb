@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="offset-1 col-md-5 my-3">
+    <div class="offset-md-1 col-md-5 my-3">
     <%= form_with model: @post, url:posts_path do |f| %>
       <%= f.hidden_field :latitude, value: nil %>
        <%= f.hidden_field :longitude, value: nil %>
