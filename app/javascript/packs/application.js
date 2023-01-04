@@ -22,4 +22,4 @@ Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 require('./preview') //画像プレビューのため
-require('./scrollToTop')
+require('./scrollToTop')//画面トップにスクロールするボタンのため

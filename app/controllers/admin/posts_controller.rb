@@ -4,11 +4,8 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # @user = User.find(params[:id])
     #投稿した人の名前表示
     @user = @post.user
-    # コメント一覧表示で使用する全コメントデータを代入（新着順で表示
-    # @comments = @post.comments.order(created_at: :asc)
      # コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
     @comments = @post.comments.order(created_at: :asc).first(3)
     @comments_next = @post.comments.order(created_at: :asc).offset(3)

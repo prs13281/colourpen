@@ -27,7 +27,6 @@ class User::CommentsController < ApplicationController
     @comments = @post.comments.order(created_at: :desc)
     @comments_next = @comments.offset(3)
 
-    #byebug
     #@comment.post_idから親のpost情報を取得し@comments = @post.comments
     flash.now[:notice] = "コメントを削除しました。"
   end

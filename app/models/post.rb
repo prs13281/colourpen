@@ -34,13 +34,6 @@ class Post < ApplicationRecord
     end
   end
 
-  # def get_post_image(post.id)
-  #   if image.attached?
-  #     image
-  #   else
-  #     'no_image.jpg'
-  #   end
-  # end
   def save_tag(sent_tags)
 
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

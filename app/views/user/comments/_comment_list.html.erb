@@ -20,12 +20,3 @@
   </div>
 
 <% end %>
-  <%#= simple_format(h(comment.text)) %>
-  <!--サインインしているユーザーのみに編集、削除ボタン表示-->
-  <%# if user_signed_in? %>
-    <%# if current_user.id == c.user_id %>
-      <%#= link_to "削除", post_comment_path(@post, c), method: :delete %>
-    <%# elsif current_user.id == @post.user_id then %>
-      <%#= link_to "削除", post_comment_path(@post, c), method: :delete %>
-    <%# end %>
-  <%# end %>

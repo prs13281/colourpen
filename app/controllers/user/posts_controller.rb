@@ -40,20 +40,6 @@ class User::PostsController < ApplicationController
       render :new
     end
 
-    # @post = current_user.posts.build(post_params)
-    #   # 受け取った値を,で区切って配列にする
-    # tag_names = tag_params.dig(:tags, :names).split(',')
-    # # タグを複数投稿できるように
-    # tag_names.each do |tag_name|
-    #   @post_tag = @post.post_tags.build
-    #   @post_tag.build_tag(name: tag_name)
-    # end
-
-    # if @post.save
-    #   redirect_to post_path(@post)
-    # else
-    #   render :new
-    # end
   end
 
   def show

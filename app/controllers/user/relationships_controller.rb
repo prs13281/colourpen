@@ -12,7 +12,6 @@ class User::RelationshipsController < ApplicationController
   end
   # フォロー一覧
   def followings
-    # binding.pry
     user = User.find(params[:user_id])
     @users = user.followings
   end
@@ -21,6 +20,6 @@ class User::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
-  
-  
+
+
 end
