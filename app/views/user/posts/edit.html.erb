@@ -27,7 +27,7 @@
        <%= f.fields_for :tags do |ff| %>
         <div class="form_group mt-3">
           <%= ff.label :"タグ（,で区切って複数タグ付け）" %>
-          <%= ff.text_field :names, autofocus: true, class:'form-control', value: @post.tags.pluck(:name).join(", b") %>
+          <%= ff.text_field :names, autofocus: true, class:'form-control', value: @post.tags.pluck(:name).join(",") %>
         </div>
        <% end %>
 
