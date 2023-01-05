@@ -22,13 +22,17 @@ class User::CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    @post = Post.find(params[:post_id])
-    @comments = @post.comments.order(created_at: :desc)
-    @comments_next = @comments.offset(3)
+    if @comment.user_id == current_user.id
+      @comment.destroy
+      @post = Post.find(params[:post_id])
+      @comments = @post.comments.order(created_at: :desc)
+      @comments_next = @comments.offset(3)
 
     #@comment.post_idから親のpost情報を取得し@comments = @post.comments
     flash.now[:notice] = "コメントを削除しました。"
+    else
+    redirect_to posts_path
+    end
   end
 
   private

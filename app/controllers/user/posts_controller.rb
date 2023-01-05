@@ -2,7 +2,7 @@ class User::PostsController < ApplicationController
 
   # newとeditはログインユーザーのみ遷移できる
   before_action :authenticate_user!,only: [:new, :edit]
-  before_action :correct_post,only: [:edit]
+  before_action :correct_post,only: [:edit, :update]
 
   def new
     # current_userからbuildで書くとuser_id作られる
@@ -80,8 +80,11 @@ class User::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
-     redirect_to users_my_page_path
+    if @post.user_id == currect_user.id
+      @post.destroy
+      redirect_to users_my_page_path
+    else
+       redirect_to posts_path
     end
   end
 
