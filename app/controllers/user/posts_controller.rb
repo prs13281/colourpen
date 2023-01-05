@@ -1,6 +1,8 @@
 class User::PostsController < ApplicationController
 
+  # newとeditはログインユーザーのみ遷移できる
   before_action :authenticate_user!,only: [:new, :edit]
+  before_action :correct_post,only: [:edit]
 
   def new
     # current_userからbuildで書くとuser_id作られる
@@ -92,6 +94,14 @@ class User::PostsController < ApplicationController
     user.save!
     sign_in user
     redirect_to posts_path
+  end
+
+  # ログインユーザー以外がeditに遷移しようとした場合投稿一覧に遷移する
+  def correct_post
+      @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to posts_path
+    end
   end
 
   private
