@@ -70,9 +70,10 @@ class User::PostsController < ApplicationController
     @post = Post.find(params[:id])
     # 入力されたタグを受け取る
     tag_names = tag_params.dig(:tags, :names).split(',')
-    if @post.update(post_params)
-        @post.save_tag(tag_names)
-        redirect_to post_path(@post.id), notice: '更新完了しました:)'
+    if @post.user_id == current_user.id
+      @post.update(post_params)
+      @post.save_tag(tag_names)
+      redirect_to post_path(@post.id), notice: '更新完了しました:)'
     else
       render :edit
     end
@@ -80,7 +81,7 @@ class User::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.user_id == currect_user.id
+    if @post.user_id == current_user.id
       @post.destroy
       redirect_to users_my_page_path
     else
