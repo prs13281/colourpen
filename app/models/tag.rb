@@ -6,7 +6,9 @@ class Tag < ApplicationRecord
   #Tagsテーブルから中間テーブルを介してArticleテーブルへの関連付け
   has_many :posts, through: :post_tag, dependent: :destroy
 
-  validates :name, uniqueness: true, presence: true
+  # 値が空、空欄でないことを確認する(presence)
+  # 属性の値に一意性を持たせる(uniqueness)
+  validates :name, presence: true, uniqueness: true # , format: { with: /\S+/,message: "スペースは許可されていません。" }
 
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得

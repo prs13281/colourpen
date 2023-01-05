@@ -34,7 +34,7 @@ class User::PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     # タグを,で区切って複数保存
-    tag_names = tag_params.dig(:tags, :names).split(',')
+    tag_names = tag_params.dig(:tags, :names).split(/[[:blank:]]+/)
     if @post.save
       @post.save_tag(tag_names)
       redirect_to post_path(@post)
@@ -69,7 +69,7 @@ class User::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     # 入力されたタグを受け取る
-    tag_names = tag_params.dig(:tags, :names).split(',')
+    tag_names = tag_params.dig(:tags, :names).split(/[[:blank:]]+/)
     if @post.user_id == current_user.id
       @post.update(post_params)
       @post.save_tag(tag_names)
