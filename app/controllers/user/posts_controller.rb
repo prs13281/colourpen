@@ -17,7 +17,6 @@ class User::PostsController < ApplicationController
   def index
     @posts = Post.all
   end
-
   def search
     @posts = Post.search(params[:keyword])
     @keyword = params[:keyword]
@@ -32,16 +31,17 @@ class User::PostsController < ApplicationController
 
 
   def create
-    @post = current_user.posts.build(post_params)
-    # タグを,で区切って複数保存
-    tag_names = tag_params.dig(:tags, :names).split(/[[:blank:]]+/)
-    if @post.save
-      @post.save_tag(tag_names)
-      redirect_to post_path(@post)
-    else
-      render :new
+    ActiveRecord::Base.transaction do
+      @post = current_user.posts.build(post_params)
+      # タグを,で区切って複数保存
+      tag_names = tag_params.dig(:tags, :names).split(/[[:blank:]]+/)
+      if @post.save
+        @post.save_tag(tag_names)
+        redirect_to post_path(@post)
+      else
+        render :new
+      end
     end
-
   end
 
   def show
@@ -67,15 +67,17 @@ class User::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-    # 入力されたタグを受け取る
-    tag_names = tag_params.dig(:tags, :names).split(/[[:blank:]]+/)
-    if @post.user_id == current_user.id
-      @post.update(post_params)
-      @post.save_tag(tag_names)
-      redirect_to post_path(@post.id), notice: '更新完了しました:)'
-    else
-      render :edit
+    ActiveRecord::Base.transaction do
+      @post = Post.find(params[:id])
+      # 入力されたタグを受け取る
+      tag_names = tag_params.dig(:tags, :names).split(/[[:blank:]]+/)
+      if @post.user_id == current_user.id
+        @post.update(post_params)
+        @post.save_tag(tag_names)
+        redirect_to post_path(@post.id), notice: '更新完了しました:)'
+      else
+        render :edit
+      end
     end
   end
 
