@@ -39,8 +39,9 @@ https://docs.google.com/spreadsheets/d/1I08oANh0IT_JnJEpB-lU8QFh0eQjQgfrLwY8NQRV
 - IDE：Cloud9
 
 
-## 使用素材
-- 使用するかもしれませんが、まだ未定です
+## その他
+- 外部API（Google Map API）
+- Font awesome
 
 
 <!--# README-->
